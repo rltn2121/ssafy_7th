@@ -1,0 +1,23 @@
+
+public class kakao2022blind_신고결과받기 {
+	
+	
+	
+    public static int[] solution(String[] id_list, String[] report, int k) {
+        int[] answer = {};
+        
+        
+        return answer;
+    }
+    
+    public static void main(String[] args) {
+    	String[] id_list = new String[] {"muzi", "frodo", "apeach", "neo"};
+    	String[] report = new String[] {"muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"};
+    	int k = 2;
+		int[] ans = solution(id_list, report, k);
+		
+		for(int i : ans)
+			System.out.println(i);
+		
+	}
+}

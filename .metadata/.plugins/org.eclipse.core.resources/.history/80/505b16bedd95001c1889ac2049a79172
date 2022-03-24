@@ -1,0 +1,147 @@
+package ps_java;
+
+
+import java.io.*;
+import java.util.*;
+
+public class b_16236 {
+	static Info shark;
+	static int N, ans;
+	static int dx[] = {-1,0,1,0};
+	static int dy[] = {0,1,0,-1};
+
+	public static void main(String[] args) throws Exception{
+		input();
+		
+		while(true) {
+			Point target = findTarget(shark);
+			if(target == null) break;
+			
+			move(shark, target);
+			// 잡아먹음
+			if(shark.map[target.x][target.y] == shark.size )
+				shark.toLevelUp--;
+			shark.map[target.x][target.y] = 0;
+			shark.x = target.x;
+			shark.y = target.y;
+			if(shark.toLevelUp == 0) 
+				shark.toLevelUp = ++shark.size;
+		}
+		
+		System.out.println(ans);
+	}
+	
+	static void move(Info info, Point target) {
+		Queue<Point> q = new ArrayDeque<>();
+		int[][] map = info.map;
+		boolean[][] visited = new boolean[N][N];
+		q.add(new Point(info.x,info.y));
+		
+		while(!q.isEmpty()) {
+			int size = q.size();
+			while(size-- > 0) {
+				Point now = q.poll();
+				int x = now.x;
+				int y = now.y;
+				
+				// 타겟에 도달 시
+				if(x==target.x && y==target.y) {
+					return;
+				}
+				
+				visited[x][y] = true;
+				
+				for(int i = 0; i<4; i++) {
+					int nx = x+dx[i];
+					int ny = y+dy[i];
+					
+					if(nx<0||nx>=N||ny<0||ny>=N||visited[nx][ny]||map[nx][ny]>info.size) continue;
+					q.add(new Point(nx,ny));
+				}
+			}
+			ans++;
+		}
+	}
+//	
+//	static int[][] copyMap(int[][] input){
+//		int ret[][] = new int[N][N];
+//		for (int i = 0; i < ret.length; i++) {
+//			for (int j = 0; j < ret.length; j++) {
+//				ret[i][j] = input[i][j];
+//			}
+//		}
+//		return ret;
+//	}
+	
+	static Point findTarget(Info info) {
+		ArrayList<Point> list = new ArrayList<Point>();
+		
+		int[][] map = info.map;
+		int size = info.size;
+		for(int i = 0; i<N; i++) {
+			for(int j = 0; j<N; j++) {
+				if(map[i][j]>0 && map[i][j] < size)
+					list.add(new Point(i,j));
+			}
+		}
+		
+		if(list.isEmpty())
+			return null;
+		
+		int x = info.x;
+		int y = info.y;
+		
+		Collections.sort(list, (a,b) -> 
+		(getDist(x,y,a.x,a.y) == getDist(x,y,b.x,b.y) ? 
+				(a.x == b.x ? (a.y-b.y) : a.x-b.x) : getDist(x,y,a.x,a.y) - getDist(x,y,b.x,b.y)));
+		
+		return list.get(0);
+		
+	}
+
+	static int getDist(int x1, int y1, int x2, int y2) {
+		return Math.abs(x1-x2) + Math.abs(y1-y2);
+	}
+	static void input() throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		
+		N = Integer.parseInt(br.readLine());
+		int[][] arr = new int[N][N];
+		for(int i = 0; i<N; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			for(int j = 0; j<N; j++) {
+				arr[i][j] = Integer.parseInt(st.nextToken());
+				if(arr[i][j] == 9) {
+					shark = new Info(i,j,2, arr,2);
+					arr[i][j] = 0;
+				}
+			}
+		}
+		br.close();
+	}
+	
+	static class Info{
+		int x;
+		int y;
+		int size;
+		int toLevelUp;
+		int[][] map;
+		public Info(int x, int y, int size, int[][] map, int toLevelUp) {
+			this.x = x;
+			this.y = y;
+			this.size = size;
+			this.map = map;
+			this.toLevelUp = toLevelUp;
+		}
+	}
+	
+	static class Point{
+		int x;
+		int y;
+		public Point(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+	}
+}	

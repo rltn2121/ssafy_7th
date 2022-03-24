@@ -1,0 +1,28 @@
+
+public class kakao2022blind_신고결과받기 {
+	
+	static int visited[][] = new int[1001][1001];
+	static int idx = 0;
+    public static int[] solution(String[] id_list, String[] report, int k) {
+
+    	// 1. 이름에 번호 부여
+    	Map<String, Integer> map = new Map<>();
+    	// 2. 신고 접수
+    	
+    	// 3. 숫자 세기
+        
+        
+        return answer;
+    }
+    
+    public static void main(String[] args) {
+    	String[] id_list = new String[] {"muzi", "frodo", "apeach", "neo"};
+    	String[] report = new String[] {"muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"};
+    	int k = 2;
+		int[] ans = solution(id_list, report, k);
+		
+		for(int i : ans)
+			System.out.println(i);
+		
+	}
+}

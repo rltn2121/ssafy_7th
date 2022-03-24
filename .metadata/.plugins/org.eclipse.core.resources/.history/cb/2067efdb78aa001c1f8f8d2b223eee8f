@@ -1,0 +1,16 @@
+package board.service;
+
+import board.dao.LoginDao;
+import board.dao.LoginDaoImpl;
+import board.dto.UserDto;
+
+public class LoginServiceImpl implements LoginService{
+
+	LoginDao loginDao = new LoginDaoImpl();
+	@Override
+	public UserDto login(String userEmail, String userPassword) {
+		
+		return null;
+	}
+
+}

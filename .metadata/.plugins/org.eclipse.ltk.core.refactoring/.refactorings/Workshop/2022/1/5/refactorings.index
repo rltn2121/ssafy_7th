@@ -1,0 +1,35 @@
+1643097369026	Rename type 'BookManager'
+1643097764395	Copy package
+1643097793137	Delete element
+1643097833831	Rename compilation unit 'BookManagerImpl.java'
+1643099639066	Copy package
+1643099795247	Copy compilation unit
+1643103819680	Rename field 'bookManager'
+1643104592381	Rename local variable 'bookToBuy'
+1643159034422	Delete element
+1643159352562	Rename local variable 'sdervice'
+1643185462693	Delete element
+1643198114046	Delete elements
+1643198838265	Delete element
+1643199063997	Rename type 'transactionIFImpl'
+1643199115690	Rename compilation unit 'TransactionIFImpl.java'
+1643199248330	Rename compilation unit 'LambdaBank.java'
+1643199444496	Rename type 'TransactionIF'
+1643200466469	Delete elements
+1643200792704	Rename type 'MyFuncIF'
+1643200906123	Rename type 'UseMyFuncIF'
+1643256813404	Copy package
+1643256822053	Rename package 'com.ssafy.ws03.step3.copy'
+1643258787293	Delete element
+1643258845610	Delete element
+1643271281785	Delete element
+1643272551525	Rename type 'WeatherDAO'
+1643272585184	Rename type 'WeatherMain'
+1643273403548	Rename local variable 'datas'
+1643275119324	Delete element
+1643275130017	Delete element
+1643275167495	Delete element
+1643275245646	Delete element
+1643275258573	Move file
+1643333053665	Delete element
+1643333120936	Delete element

@@ -1,0 +1,57 @@
+package com.ssafy.guestbook;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ssafy.util.DBUtil;
+
+@WebServlet("/articlewrite")
+public class GuestBookWrite extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	private DBUtil dbUtil;
+	
+	@Override
+	public void init() {
+		dbUtil= DBUtil.getInstance();
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		//		1. 아이디, 제목, 내용 get
+//		2. Logic -> 받은 데이터를 DB에 insert
+//		3. 응답 페이지 작성 (response page >> html)
+		
+		
+		String userid = request.getParameter("userid");
+		String subject = request.getParameter("subject");
+		String content = request.getParameter("content");
+		
+		int cnt = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = dbUtil.getConnection();
+			String sql = "insert into guestbook (userid, subject, content) values (?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1,  userid);
+			pstmt.setString(2,  subject);
+			pstmt.setString(3,  content);
+			
+			cnt = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbUtil.close(pstmt, conn);
+		}
+	}
+
+}

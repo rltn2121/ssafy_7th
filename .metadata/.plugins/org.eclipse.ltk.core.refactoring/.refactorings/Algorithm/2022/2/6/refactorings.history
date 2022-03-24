@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;basic.bBASIC_RecursiveCall&apos; to &apos;BASIC_RecursiveCall&apos;&#x0D;&#x0A;- Original project: &apos;Algorithm&apos;&#x0D;&#x0A;- Original element: &apos;basic.bBASIC_RecursiveCall&apos;&#x0D;&#x0A;- Renamed element: &apos;basic.BASIC_RecursiveCall&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;bBASIC_RecursiveCall&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;basic{bBASIC_RecursiveCall.java[bBASIC_RecursiveCall" matchStrategy="1" name="BASIC_RecursiveCall" qualified="false" references="true" similarDeclarations="false" stamp="1643939741799" textual="false" version="1.0"/>
+</session>

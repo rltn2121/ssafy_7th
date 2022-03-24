@@ -1,0 +1,58 @@
+package ps_java;
+
+
+import java.io.*;
+import java.util.*;
+
+public class b_12100 {
+	static int N;
+	ㄴㅅㅁ
+	static int arr[][];
+	public static void main(String[] args) throws Exception{
+		input();
+		
+	}
+	
+	static void moveLeft() {
+		for(int row = 0; row<N; row++) {
+			for(int col = 1; col<N; col++) {
+				int ny = col-1;
+				
+				// 잠시 빼놓기
+				int temp = arr[row][col];
+				arr[row][col] = 0;
+				while(true) {
+					// 벽 만나면 멈춤
+					if(ny == -1) {
+						arr[row][ny] = temp;
+						break;
+					}
+					
+					// 다른 숫자 만나도 멈춤
+					if(arr[row][ny] != temp) {
+						arr[row][ny] = temp;
+						break;
+					}
+					
+					// 같은 숫자 만나면 합치기
+					else if(arr[row][ny] == temp) {
+						arr[row][ny] *=2;
+					}
+					ny--;
+				}
+			}
+		}
+	}
+	
+	
+	static void input() throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		N = Integer.parseInt(br.readLine());
+		arr = new int[N][N];
+		for(int i = 0; i<N; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			for(int j = 0; j<N; j++)
+				arr[i][j] = Integer.parseInt(st.nextToken());
+		}
+	}
+}	

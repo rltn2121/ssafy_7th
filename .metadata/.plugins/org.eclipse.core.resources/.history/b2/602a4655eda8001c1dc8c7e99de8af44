@@ -1,0 +1,13 @@
+package dao;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import dto.ShopDto;
+
+public interface ShopDao {
+	public ShopDto findById(int id);
+	public ArrayList<ShopDto> findByShopName(String keyword);
+	public ArrayList<ShopDto> findByDongCode(String keyword);
+	public ArrayList<ShopDto> findAll() throws SQLException;
+}
+

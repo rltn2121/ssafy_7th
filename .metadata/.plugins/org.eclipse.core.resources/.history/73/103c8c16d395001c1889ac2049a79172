@@ -1,0 +1,58 @@
+package ps_java;
+
+
+import java.io.*;
+import java.util.*;
+
+public class b_16236 {
+	static Point shark;
+	static int N,arr[][], ans;
+	static int dx[] = {-1,0,1,0};
+	static int dy[] = {0,1,0,-1};
+	public static void main(String[] args) throws Exception{
+		input();
+		
+		
+		
+		
+		
+		System.out.println(ans);
+	}
+	
+	
+	static int[][] copyMap(int[][] input){
+		int ret[][] = new int[N][N];
+		for (int i = 0; i < ret.length; i++) {
+			for (int j = 0; j < ret.length; j++) {
+				ret[i][j] = input[i][j];
+			}
+		}
+		return ret;
+	}
+	
+	static void input() throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		N = Integer.parseInt(br.readLine());
+		arr = new int[N][N];
+		for(int i = 0; i<N; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			for(int j = 0; j<N; j++) {
+				arr[i][j] = Integer.parseInt(st.nextToken());
+				if(arr[i][j] == 9)
+					shark = new Point(i,j,2);
+			}
+		}
+		br.close();
+	}
+	
+	static class Point{
+		int x;
+		int y;
+		int size;
+		public Point(int x, int y, int size) {
+			this.x = x;
+			this.y = y;
+			this.size = size;
+		}
+	}
+}	

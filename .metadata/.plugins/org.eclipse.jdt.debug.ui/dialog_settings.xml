@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="104" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth2"/>
+	<item value="1" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.sortColumn"/>
+	<item value="226" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth1"/>
+	<item value="104" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth0"/>
+	<section name="conditionHistory">
+		<item value="ans==14&#x0D;&#x0A;" key="conditionHistoryEntry_8"/>
+		<item value="ans==23" key="conditionHistoryEntry_9"/>
+		<item value="x==2&amp;&amp;y==0" key="conditionHistoryEntry_6"/>
+		<item value="ans==14" key="conditionHistoryEntry_7"/>
+		<item value="10" key="conditionHistoryEntryCount"/>
+		<item value="temp.equals(&quot;2211111111&quot;)" key="conditionHistoryEntry_0"/>
+		<item value="num==2211111111" key="conditionHistoryEntry_1"/>
+		<item value="top.x==1&amp;&amp;top.y==3&amp;&amp;left.x==3&amp;&amp;left.y==1&amp;&amp;bottom.x==5&amp;&amp;bottom.y==3&amp;&amp;right.x==3&amp;&amp;right.y==5" key="conditionHistoryEntry_4"/>
+		<item value="top.x==1&amp;&amp;top.y==3&amp;&amp;left.x==3&amp;&amp;left.y==1&amp;&amp;bottom.x==5&amp;&amp;bottom.y=3&amp;&amp;right.x==3&amp;&amp;right.y==5" key="conditionHistoryEntry_5"/>
+		<item value="i==9&amp;&amp;j==9" key="conditionHistoryEntry_2"/>
+		<item value="top.x==2&amp;&amp;top.y==2&amp;&amp;left.x==3&amp;&amp;left.y==1&amp;&amp;bottom.x==4&amp;&amp;bottom.y==2&amp;&amp;right.x==3&amp;&amp;right.y==3" key="conditionHistoryEntry_3"/>
+	</section>
+	<section name="org.eclipse.jdt.internal.debug.ui.ExpressionInformationControlCreator$ExpressionInformationControl">
+		<item value="500" key="SashWeightTree"/>
+		<item value="500" key="SashWeightDetails"/>
+		<item value="716" key="WIDTH"/>
+		<item value="256" key="HEIGHT"/>
+	</section>
+</section>

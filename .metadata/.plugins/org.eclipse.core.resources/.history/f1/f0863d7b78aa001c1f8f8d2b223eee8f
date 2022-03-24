@@ -1,0 +1,5 @@
+package board.service;
+
+public interface LoginService {
+	public UserDto login(String userEmail, String userPassword);
+}

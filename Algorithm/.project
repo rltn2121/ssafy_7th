@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Algorithm</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src/DAEJEON02_JAVA.java</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/99.%EC%9D%BC%ED%83%80%EC%82%AC%ED%94%BC/%ED%86%B5%EC%8B%A0%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%BD%94%EB%93%9C/DAEJEON02_JAVA.java</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

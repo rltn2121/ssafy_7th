@@ -1,0 +1,21 @@
+public class JDBCClient {
+	public static void main(String[] args) throws Exception {
+		// Connection 객체 사용
+		
+		// JDBC 드라이버를 메모리에 LOAD
+		Class.forName("com.mysql.cj.jdbc.Driver");
+//		
+//		SimpleDao dao = new SimpleDao();
+//		SimpleDto dto = new SimpleDto("홍길동", "not null", "기본값");
+//		
+//		System.out.println(dao.insert2(dto));
+//		
+//		SimpleDto dto2 = new SimpleDto(1, "홍길동", "not null", "기본값");
+//		System.out.println(dao.insertDup(dto2));
+//		
+		
+		SimpleDto dto3 = new SimpleDto("홍길동", "not null", "기본값");
+		System.out.println(dao.insertWithoutDefaultValue(dto3));
+		// Connection 객체 반납 (종료)
+	}
+}

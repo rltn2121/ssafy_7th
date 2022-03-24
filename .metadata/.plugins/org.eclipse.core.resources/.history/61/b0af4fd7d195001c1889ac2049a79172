@@ -1,0 +1,26 @@
+package ps_java;
+
+
+import java.io.*;
+import java.util.*;
+
+public class b_16236 {
+	
+	static int N,arr[][];
+	public static void main(String[] args) throws Exception{
+		
+		bw.close();
+	}
+	
+	static void input() throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		N = Integer.parseInt(br.readLine());
+		for(int i = 0; i<N; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			for(int j = 0; j<N; j++) 
+				arr[i][j] = Integer.parseInt(st.nextToken());
+		}
+		br.close();
+	}
+}	

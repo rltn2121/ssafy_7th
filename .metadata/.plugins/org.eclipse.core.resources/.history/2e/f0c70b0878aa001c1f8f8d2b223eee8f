@@ -1,0 +1,21 @@
+package board.dto;
+
+import java.sql.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserDto {
+	private int userSeq;
+	private String userNmae;
+	private String userPassword;
+	private String userEmail;
+	private String userProfileImageUrl;
+	private Date userRegisterDate;
+}

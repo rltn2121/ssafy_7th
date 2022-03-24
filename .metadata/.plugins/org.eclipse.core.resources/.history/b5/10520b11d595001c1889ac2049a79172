@@ -1,0 +1,109 @@
+package ps_java;
+
+
+import java.io.*;
+import java.util.*;
+
+public class b_16236 {
+	static Queue<Info> q = new ArrayDeque<Info>();
+	static Info shark;
+	static int N, ans;
+	static int dx[] = {-1,0,1,0};
+	static int dy[] = {0,1,0,-1};
+	static ArrayList<Point> fishes[] = new ArrayList[7];
+	public static void main(String[] args) throws Exception{
+		input();
+		
+		q.add(shark);
+		
+		while(!q.isEmpty()) {
+			int cnt = q.size();
+			while(cnt-- > 0) {
+				Info now = q.poll();
+				int[][] map = now.map;
+				
+				int x = now.x;
+				int y = now.y;
+				int size = now.size;
+				Queue<Info> temp = new ArrayDeque<>();
+				for(int i = 0; i<4; i++) {
+					int nx = x+dx[i];
+					int ny = y+dy[i];
+					
+					if(nx<0||nx>=N||ny<0||ny>=N) continue;
+					// 1. 못먹음
+					if(map[nx][ny] > size) continue;
+					
+					// 2. 이동 가능
+					if(map[nx][ny] == size) 
+						q.add(new Info(nx, ny, size, map));
+					// 3. 먹을 수 있음
+					else {
+						
+					}
+					
+				}
+				
+			}
+			ans++;
+		}
+		
+		
+		
+		System.out.println(ans);
+	}
+	
+	
+	static int[][] copyMap(int[][] input){
+		int ret[][] = new int[N][N];
+		for (int i = 0; i < ret.length; i++) {
+			for (int j = 0; j < ret.length; j++) {
+				ret[i][j] = input[i][j];
+			}
+		}
+		return ret;
+	}
+	
+	static void input() throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		N = Integer.parseInt(br.readLine());
+		int[][] arr = new int[N][N];
+		for(int i = 0; i<N; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			for(int j = 0; j<N; j++) {
+				arr[i][j] = Integer.parseInt(st.nextToken());
+				if(arr[i][j] == 0) continue;
+				if(arr[i][j] == 9) {
+					shark = new Info(i,j,2, arr);
+					arr[i][j] = 0;
+				}
+				else {
+					
+				}
+			}
+		}
+		br.close();
+	}
+	
+	static class Info{
+		int x;
+		int y;
+		int size;
+		int[][] map;
+		public Info(int x, int y, int size, int[][] map) {
+			this.x = x;
+			this.y = y;
+			this.size = size;
+			this.map = map;
+		}
+	}
+	
+	static class Point{
+		int x;
+		int y;
+		public Point(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+	}
+}	

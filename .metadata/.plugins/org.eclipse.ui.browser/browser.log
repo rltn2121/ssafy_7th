@@ -1,0 +1,125 @@
+
+1월 14, 2022 09:56:57.83 NEW SESSION
+1월 14, 2022 09:56:57.83 [4756:8964:0114/095657.831:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+1월 14, 2022 09:56:57.83 [4756:8964:0114/095657.831:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+1월 14, 2022 09:56:57.83 [4756:8964:0114/095657.831:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+1월 14, 2022 09:56:57.83 [4756:8964:0114/095657.834:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+1월 14, 2022 10:20:18.30 [17024:23912:0114/102018.299:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+1월 14, 2022 10:20:18.30 [17024:23912:0114/102018.299:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+1월 14, 2022 10:20:18.30 [17024:23912:0114/102018.299:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+1월 14, 2022 10:20:18.30 [17024:23912:0114/102018.303:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+
+1월 17, 2022 14:24:45.52 NEW SESSION
+1월 17, 2022 14:24:45.52 [480:8596:0117/142445.475:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+1월 17, 2022 14:24:45.52 [480:8596:0117/142445.476:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+1월 17, 2022 14:24:45.52 [480:8596:0117/142445.476:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+1월 17, 2022 14:24:45.52 [480:8596:0117/142445.480:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+1월 17, 2022 14:24:45.53 [480:14120:0117/142445.485:ERROR:device_event_log_impl.cc(214)] [14:24:45.484] USB: usb_device_handle_win.cc:1050 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+1월 17, 2022 14:24:45.53 [480:14120:0117/142445.487:ERROR:device_event_log_impl.cc(214)] [14:24:45.486] USB: usb_device_handle_win.cc:1050 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+
+1월 17, 2022 16:42:04.67 NEW SESSION
+1월 17, 2022 16:42:04.69 [10724:1076:0117/164204.675:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+1월 17, 2022 16:42:04.69 [10724:1076:0117/164204.675:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+1월 17, 2022 16:42:04.69 [10724:1076:0117/164204.675:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+1월 17, 2022 16:42:04.69 [10724:1076:0117/164204.682:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+
+1월 18, 2022 23:24:29.83 NEW SESSION
+1월 18, 2022 23:24:29.83 [8672:20300:0118/232429.830:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+1월 18, 2022 23:24:29.83 [8672:20300:0118/232429.830:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+1월 18, 2022 23:24:29.83 [8672:20300:0118/232429.830:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+1월 18, 2022 23:24:29.83 [8672:20300:0118/232429.832:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+1월 18, 2022 23:24:29.83 [8672:21664:0118/232429.838:ERROR:device_event_log_impl.cc(214)] [23:24:29.838] USB: usb_device_handle_win.cc:1050 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+
+1월 19, 2022 09:20:15.68 NEW SESSION
+1월 19, 2022 09:20:15.68 [14788:4108:0119/092015.686:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+1월 19, 2022 09:20:15.68 [14788:4108:0119/092015.686:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+1월 19, 2022 09:20:15.69 [14788:4108:0119/092015.686:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+1월 19, 2022 09:20:15.69 [14788:4108:0119/092015.692:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+
+1월 20, 2022 13:08:55.68 NEW SESSION
+1월 20, 2022 13:08:55.68 [13484:1000:0120/130855.679:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+1월 20, 2022 13:08:55.68 [13484:1000:0120/130855.679:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+1월 20, 2022 13:08:55.68 [13484:1000:0120/130855.679:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+1월 20, 2022 13:08:55.68 [13484:1000:0120/130855.684:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+
+2월 03, 2022 09:38:33.65 NEW SESSION
+2월 03, 2022 09:38:33.65 ���� ������ ���ǿ��� ���� ���Դϴ�.
+2월 03, 2022 09:38:36.20 [13060:2844:0203/093836.208:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+2월 03, 2022 09:38:36.20 [13060:2844:0203/093836.208:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+2월 03, 2022 09:38:36.20 [13060:2844:0203/093836.208:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+2월 03, 2022 09:38:36.21 [13060:2844:0203/093836.211:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+2월 03, 2022 09:38:36.21 [13060:25564:0203/093836.217:ERROR:device_event_log_impl.cc(214)] [09:38:36.217] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+2월 03, 2022 09:38:36.22 [13060:25564:0203/093836.220:ERROR:device_event_log_impl.cc(214)] [09:38:36.220] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+2월 03, 2022 13:30:13.82 [8972:24004:0203/133013.829:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+2월 03, 2022 13:30:13.83 [8972:24004:0203/133013.829:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+2월 03, 2022 13:30:13.83 [8972:24004:0203/133013.829:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+2월 03, 2022 13:30:13.84 [8972:24004:0203/133013.840:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+
+2월 08, 2022 11:04:04.91 NEW SESSION
+2월 08, 2022 11:04:04.92 [15868:11912:0208/110404.908:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+2월 08, 2022 11:04:04.92 [15868:11912:0208/110404.908:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+2월 08, 2022 11:04:04.92 [15868:11912:0208/110404.908:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+2월 08, 2022 11:04:04.92 [15868:11912:0208/110404.912:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+2월 08, 2022 11:04:04.92 [15868:10652:0208/110404.915:ERROR:device_event_log_impl.cc(214)] [11:04:04.915] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+2월 08, 2022 11:04:04.92 [15868:10652:0208/110404.918:ERROR:device_event_log_impl.cc(214)] [11:04:04.918] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+
+2월 16, 2022 09:25:35.26 NEW SESSION
+2월 16, 2022 09:25:35.26 ���� ������ ���ǿ��� ���� ���Դϴ�.
+2월 16, 2022 09:25:37.19 [23160:248:0216/092537.191:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+2월 16, 2022 09:25:37.20 [23160:248:0216/092537.204:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+2월 16, 2022 09:25:37.20 [23160:248:0216/092537.205:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+2월 16, 2022 09:25:37.21 [23160:248:0216/092537.215:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+
+2월 22, 2022 12:56:32.00 NEW SESSION
+2월 22, 2022 12:56:32.00 [15804:7452:0222/125631.999:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+2월 22, 2022 12:56:32.01 [15804:7452:0222/125632.012:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+2월 22, 2022 12:56:32.01 [15804:7452:0222/125632.012:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+2월 22, 2022 12:56:32.01 [15804:7452:0222/125632.014:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+
+2월 25, 2022 11:27:39.72 NEW SESSION
+2월 25, 2022 11:27:39.72 [6592:9248:0225/112739.717:ERROR:chrome_browser_main_extra_parts_metrics.cc(227)] START: ReportBluetoothAvailability(). If you don't see the END: message, this is crbug.com/1216328.
+2월 25, 2022 11:27:39.72 [6592:9248:0225/112739.717:ERROR:chrome_browser_main_extra_parts_metrics.cc(230)] END: ReportBluetoothAvailability()
+2월 25, 2022 11:27:39.72 [6592:9248:0225/112739.718:ERROR:chrome_browser_main_extra_parts_metrics.cc(235)] START: GetDefaultBrowser(). If you don't see the END: message, this is crbug.com/1216328.
+2월 25, 2022 11:27:39.72 [6592:9248:0225/112739.722:ERROR:chrome_browser_main_extra_parts_metrics.cc(239)] END: GetDefaultBrowser()
+2월 25, 2022 12:29:42.80 [6592:6660:0225/122942.803:ERROR:device_event_log_impl.cc(214)] [12:29:42.803] USB: usb_service_win.cc:260 Failed to get device driver name: ��Ұ� �����ϴ�. (0x490)
+
+3월 17, 2022 21:11:04.38 NEW SESSION
+3월 17, 2022 21:11:04.38 [21856:13936:0317/211104.376:ERROR:device_event_log_impl.cc(214)] [21:11:04.376] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+
+3월 22, 2022 10:34:04.56 NEW SESSION
+3월 22, 2022 10:34:04.56 [26884:10976:0322/103404.564:ERROR:device_event_log_impl.cc(214)] [10:34:04.564] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 10:34:04.56 [26884:10976:0322/103404.568:ERROR:device_event_log_impl.cc(214)] [10:34:04.568] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 11:12:34.00 [2468:20340:0322/111234.004:ERROR:device_event_log_impl.cc(214)] [11:12:34.004] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 11:12:34.00 [2468:20340:0322/111234.008:ERROR:device_event_log_impl.cc(214)] [11:12:34.008] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 11:15:00.15 [19884:23036:0322/111500.153:ERROR:device_event_log_impl.cc(214)] [11:15:00.153] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 11:15:00.15 [19884:23036:0322/111500.156:ERROR:device_event_log_impl.cc(214)] [11:15:00.156] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 14:53:51.08 [27412:5256:0322/145351.079:ERROR:device_event_log_impl.cc(214)] [14:53:51.080] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 14:53:51.08 [27412:5256:0322/145351.082:ERROR:device_event_log_impl.cc(214)] [14:53:51.083] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 15:12:27.84 [24492:14464:0322/151227.845:ERROR:device_event_log_impl.cc(214)] [15:12:27.845] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 15:12:27.85 [24492:14464:0322/151227.849:ERROR:device_event_log_impl.cc(214)] [15:12:27.849] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 15:43:05.53 [23340:22092:0322/154305.531:ERROR:device_event_log_impl.cc(214)] [15:43:05.532] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 15:43:05.53 [23340:22092:0322/154305.535:ERROR:device_event_log_impl.cc(214)] [15:43:05.535] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+
+3월 22, 2022 21:04:24.20 NEW SESSION
+3월 22, 2022 21:04:24.20 [13016:25444:0322/210424.205:ERROR:device_event_log_impl.cc(214)] [21:04:24.205] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 22, 2022 21:06:59.28 [27104:19736:0322/210659.285:ERROR:device_event_log_impl.cc(214)] [21:06:59.285] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+
+3월 23, 2022 12:28:40.81 NEW SESSION
+3월 23, 2022 12:28:40.81 [20692:15436:0323/122840.794:ERROR:connection_factory_impl.cc(425)] Failed to connect to MCS endpoint with error -105
+3월 23, 2022 12:28:42.06 [20692:18124:0323/122842.067:ERROR:device_event_log_impl.cc(214)] [12:28:42.067] USB: usb_service_win.cc:260 Failed to get device driver name: ��Ұ� �����ϴ�. (0x490)
+3월 23, 2022 12:28:47.41 [20692:15436:0323/122847.414:ERROR:connection_factory_impl.cc(425)] Failed to connect to MCS endpoint with error -105
+3월 23, 2022 20:39:04.97 [11340:21076:0323/203904.972:ERROR:device_event_log_impl.cc(214)] [20:39:04.972] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:34:11.14 [23596:18624:0323/213411.145:ERROR:device_event_log_impl.cc(214)] [21:34:11.146] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:36:10.70 [15176:26724:0323/213610.703:ERROR:device_event_log_impl.cc(214)] [21:36:10.703] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:45:08.58 [16288:8616:0323/214508.586:ERROR:device_event_log_impl.cc(214)] [21:45:08.585] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:45:24.23 [12608:21052:0323/214524.232:ERROR:device_event_log_impl.cc(214)] [21:45:24.233] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:48:53.05 [20076:27980:0323/214853.055:ERROR:device_event_log_impl.cc(214)] [21:48:53.055] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:51:09.10 [28224:16532:0323/215109.103:ERROR:device_event_log_impl.cc(214)] [21:51:09.103] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:51:58.45 [25712:14308:0323/215158.453:ERROR:device_event_log_impl.cc(214)] [21:51:58.453] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:52:14.80 [6088:28144:0323/215214.808:ERROR:device_event_log_impl.cc(214)] [21:52:14.808] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:53:22.72 [24872:21332:0323/215322.721:ERROR:device_event_log_impl.cc(214)] [21:53:22.721] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:53:33.45 [15672:25440:0323/215333.451:ERROR:device_event_log_impl.cc(214)] [21:53:33.451] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:54:28.06 [19804:26264:0323/215428.060:ERROR:device_event_log_impl.cc(214)] [21:54:28.059] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 21:54:41.12 [26804:17584:0323/215441.121:ERROR:device_event_log_impl.cc(214)] [21:54:41.121] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 22:05:11.85 [9012:15040:0323/220511.859:ERROR:device_event_log_impl.cc(214)] [22:05:11.859] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 23, 2022 22:12:50.55 [9012:15040:0323/221250.550:ERROR:interface_endpoint_client.cc(659)] Message 5 rejected by interface blink.mojom.WidgetHost

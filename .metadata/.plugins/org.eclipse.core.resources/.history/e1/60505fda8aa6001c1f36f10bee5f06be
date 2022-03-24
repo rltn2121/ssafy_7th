@@ -1,0 +1,19 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBManager {
+	private static String url = "jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC&useUniCode=yes&characterEncoding=UTF-8";
+	private static String user = "root";
+	private static String pw = "5ab5c87a";
+	
+	public static Connection getConnection() {
+		Connection con = null;
+		
+		try {
+			con = DriverManager.getConnection(url, user, pw);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return con;
+	}
+}
