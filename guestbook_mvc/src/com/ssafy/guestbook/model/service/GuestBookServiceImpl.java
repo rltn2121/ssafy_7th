@@ -27,5 +27,5 @@ public class GuestBookServiceImpl implements GuestBookService {
 	public List<GuestBookDto> listArticle() throws Exception {
 		return guestBookDao.listArticle();
 	}
-
+ 
 }

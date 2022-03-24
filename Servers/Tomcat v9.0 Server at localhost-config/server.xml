@@ -106,7 +106,7 @@
 				<Context docBase="WebBasic" path="/WebBasic" reloadable="true" source="org.eclipse.jst.jee.server:WebBasic"/>
 				<Context docBase="HelloServlet" path="/HelloServlet" reloadable="true" source="org.eclipse.jst.jee.server:HelloServlet"/>
 				<Context docBase="basic_web" path="/bw" reloadable="true" source="org.eclipse.jst.jee.server:basic_web"/>
-			<Context docBase="guestbook_servlet" path="/guestbook_servlet" reloadable="true" source="org.eclipse.jst.jee.server:guestbook_servlet"/><Context docBase="web_back_hw_1_2-master" path="/web_back_hw_1_2" reloadable="true" source="org.eclipse.jst.jee.server:web_back_hw_1_2-master"/><Context docBase="BoardWebAjaxJson" path="/BoardWebAjaxJson" reloadable="true" source="org.eclipse.jst.jee.server:BoardWebAjaxJson"/></Host>
+			<Context docBase="guestbook_servlet" path="/guestbook_servlet" reloadable="true" source="org.eclipse.jst.jee.server:guestbook_servlet"/><Context docBase="web_back_hw_1_2-master" path="/web_back_hw_1_2" reloadable="true" source="org.eclipse.jst.jee.server:web_back_hw_1_2-master"/><Context docBase="BoardWebAjaxJson" path="/BoardWebAjaxJson" reloadable="true" source="org.eclipse.jst.jee.server:BoardWebAjaxJson"/><Context docBase="guestbook_mvc" path="/guestbook_mvc" reloadable="true" source="org.eclipse.jst.jee.server:guestbook_mvc"/></Host>
 		</Engine>
 	</Service>
 </Server>

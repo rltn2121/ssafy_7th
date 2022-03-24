@@ -29,15 +29,15 @@ public class MemberServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/user/join.jsp");
 		} else if("register".equals(act)) {
 			path = registerMember(request, response);
-			
+			request.getRequestDispatcher(path).forward(request, response);
 		} else if("idcheck".equals(act)) {
 			int cnt = idCheck(request, response);
-			
+			response.getWriter().append(cnt+"");
 		} else if("mvlogin".equals(act)) {
-			
+			response.sendRedirect(request.getContextPath() + "/user/login.jsp");
 		} else if("login".equals(act)) {
 			path = loginMember(request, response);
-			
+			request.getRequestDispatcher(path).forward(request, response);
 		} else if("logout".equals(act)) {
 			path = loginOutMember(request, response);
 			
@@ -46,7 +46,8 @@ public class MemberServlet extends HttpServlet {
 
 	private int idCheck(HttpServletRequest request, HttpServletResponse response) {
 		int cnt = 1;
-		
+		String id = request.getParameter("ckid");
+		cnt = memberService.idCheck(id);
 		return cnt;
 	}
 
@@ -56,8 +57,15 @@ public class MemberServlet extends HttpServlet {
 		memberDto.setUserId(request.getParameter("userid"));
 		memberDto.setUserPwd(request.getParameter("userpwd"));
 		memberDto.setEmail(request.getParameter("emailid") + "@" + request.getParameter("emaildomain"));
-		
-		return "";
+		try {
+			memberService.registerMember(memberDto);
+			return "/user/login.jsp";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			request.setAttribute("msg", "회원가입 중 문제가 발생했습니다.");
+			return "/error/error.jsp";
+		}
 	}
 
 	private String loginMember(HttpServletRequest request, HttpServletResponse response) {
@@ -68,13 +76,23 @@ public class MemberServlet extends HttpServlet {
 		
 		try {
 			memberDto = memberService.login(id, pass);
+			// 로그인 성공
+			if(memberDto != null) {
+				 HttpSession session = request.getSession();
+				 session.setAttribute("userInfo", memberDto);
+				return "/index.jsp";
+			} 
+			// 로그인 실패
+			else {
+				request.setAttribute("msg", "아이디 비번 확인");
+				return "/user/login.jsp";
+			}
+ 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "로그인 처리중 문제 발생!!");
 			return "/error/error.jsp";
 		}
-		
-		return "";
 	}
 
 	private String loginOutMember(HttpServletRequest request, HttpServletResponse response) {

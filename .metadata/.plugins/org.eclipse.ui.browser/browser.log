@@ -123,3 +123,19 @@
 3월 23, 2022 21:54:41.12 [26804:17584:0323/215441.121:ERROR:device_event_log_impl.cc(214)] [21:54:41.121] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
 3월 23, 2022 22:05:11.85 [9012:15040:0323/220511.859:ERROR:device_event_log_impl.cc(214)] [22:05:11.859] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
 3월 23, 2022 22:12:50.55 [9012:15040:0323/221250.550:ERROR:interface_endpoint_client.cc(659)] Message 5 rejected by interface blink.mojom.WidgetHost
+
+3월 24, 2022 11:19:40.04 NEW SESSION
+3월 24, 2022 11:19:40.04 [15584:23840:0324/111940.039:ERROR:device_event_log_impl.cc(214)] [11:19:40.039] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:19:40.04 [15584:23840:0324/111940.042:ERROR:device_event_log_impl.cc(214)] [11:19:40.042] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:23:13.64 [9276:3900:0324/112313.640:ERROR:device_event_log_impl.cc(214)] [11:23:13.640] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:23:13.64 [9276:3900:0324/112313.643:ERROR:device_event_log_impl.cc(214)] [11:23:13.643] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:25:00.63 [28076:26736:0324/112500.632:ERROR:device_event_log_impl.cc(214)] [11:25:00.633] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:25:00.63 [28076:26736:0324/112500.636:ERROR:device_event_log_impl.cc(214)] [11:25:00.636] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:26:07.45 [12180:6760:0324/112607.456:ERROR:device_event_log_impl.cc(214)] [11:26:07.456] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:26:07.45 [12180:6760:0324/112607.458:ERROR:device_event_log_impl.cc(214)] [11:26:07.459] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:26:51.39 [12672:25700:0324/112651.399:ERROR:device_event_log_impl.cc(214)] [11:26:51.399] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:26:51.40 [12672:25700:0324/112651.401:ERROR:device_event_log_impl.cc(214)] [11:26:51.402] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:46:51.61 [20880:28480:0324/114651.609:ERROR:device_event_log_impl.cc(214)] [11:46:51.610] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:46:51.62 [20880:28480:0324/114651.613:ERROR:device_event_log_impl.cc(214)] [11:46:51.614] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:48:02.67 [6300:18072:0324/114802.679:ERROR:device_event_log_impl.cc(214)] [11:48:02.678] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+3월 24, 2022 11:48:02.68 [6300:18072:0324/114802.679:ERROR:device_event_log_impl.cc(214)] [11:48:02.679] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
