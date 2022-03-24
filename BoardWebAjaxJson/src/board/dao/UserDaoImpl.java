@@ -8,35 +8,44 @@ import board.common.DBManager;
 import board.dto.UserDto;
 
 public class UserDaoImpl implements UserDao{
-	private UserDaoImpl() {};
+	
 	private static UserDaoImpl instance = new UserDaoImpl();
+	
+	private UserDaoImpl() {}
+
 	public static UserDaoImpl getInstance() {
 		return instance;
 	}
 	
 	@Override
-	public int register(UserDto dto) {
-		int ret = 0;
+	public int userRegister(UserDto userDto) {
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int ret = -1;
 		
 		try {
 			con = DBManager.getConnection();
-			String sql = "insert into users (USER_NAME, USER_PASSWORD,USER_EMAIL, USER_REGISTER_DATE) values (?, ?, ?, now());";
+			String sql = 
+					"INSERT INTO USERS " + 
+					" (USER_NAME, USER_PASSWORD, USER_EMAIL, USER_PROFILE_IMAGE_URL, USER_REGISTER_DATE) " + 
+					" VALUES ( ?, ?, ?, '', now() ) ";
+			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, dto.getUserName());
-			pstmt.setString(2, dto.getUserPassword());
-			pstmt.setString(3, dto.getUserEmail());
-			
+			pstmt.setString(1,  userDto.getUserName());
+			pstmt.setString(2,  userDto.getUserPassword());
+			pstmt.setString(3,  userDto.getUserEmail());
+
 			ret = pstmt.executeUpdate();
-			
-			
-		} catch(Exception e) {
+
+		}catch(Exception e) {			
 			e.printStackTrace();
+		}finally {
+			DBManager.releaseConnection(rs, pstmt, con);
 		}
-		finally {
-			DBManager.releaseConnection(pstmt, con);
-		}
+		
 		return ret;
 	}
 

@@ -28,4 +28,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>WebContent/img/noProfile.png</name>
+			<type>1</type>
+			<locationURI>PARENT-4-PROJECT_LOC/Downloads/%EC%86%8C%EC%8A%A4%EC%BD%94%EB%93%9C/220324/register/noProfile.png</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

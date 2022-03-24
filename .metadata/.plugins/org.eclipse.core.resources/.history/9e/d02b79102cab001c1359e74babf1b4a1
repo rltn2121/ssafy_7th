@@ -1,0 +1,5 @@
+package board.config;
+
+public class LoginFilter {
+
+}
