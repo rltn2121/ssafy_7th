@@ -1,6 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.List, com.ssafy.guestbook.model.GuestBookDto"%>
+    pageEncoding="UTF-8" import="java.util.List, com.ssafy.guestbook.model.*"%>
 <%@ include file="/template/header.jsp" %>
+
+<%
+MemberDto memberDto = (MemberDto)session.getAttribute("userInfo");
+if(memberDto == null) {
+%>
+<script>
+alert("로그인 사용자만 가능");
+location.href= "<%=root %>/";
+</script>
+<%	
+}
+
+else {
+%>
+
+
     <style>
         mark.sky {
             background: linear-gradient(to top, #54fff9 20%, transparent 30%);
@@ -55,4 +71,8 @@ if(list.size() != 0) {
 %>         
         </div>
     </div>
+    
+<%
+} 
+%>
 <%@ include file="/template/footer.jsp" %>

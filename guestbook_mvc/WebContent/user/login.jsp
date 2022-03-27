@@ -6,11 +6,46 @@
 	<c:set var="idck" value=" checked=\"checked\""/>
 </c:if>
 
+<%
+String msg = (String)request.getParameter("msg");
+if(msg != null){
+%>
+
+<script>
+
+alert("<%=msg%>");
+</script>
+
+<%
+} 
+%>
+
+<%
+String svid = "";
+String ckid = "";
+Cookie[] cookies = request.getCookies();
+if(cookies != null){
+	for(Cookie c : cookies){
+		if(c.getName().equals("loginid")){
+			ckid = " checked";
+			svid = c.getValue();
+			break;
+		}
+	}
+}
+%>
+
+
+
     <style>
         mark.orange {
             background: linear-gradient(to top, orange 20%, transparent 30%);
         }
     </style>
+
+
+
+
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -38,12 +73,12 @@
                 <input type="hidden" name="act" id="act" value="login">
                 <div class="form-group form-check text-right">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="idsave" name="idsave" value="saveok"> 아이디저장
+                        <input class="form-check-input" type="checkbox" id="idsave" name="idsave" value="saveok" <%= ckid %>> 아이디저장
                     </label>
                 </div>
                 <div class="form-group">
                     <label for="userid">아이디</label>
-                    <input type="text" class="form-control" id="userid" name="userid" placeholder="" value="">
+                    <input type="text" class="form-control" id="userid" name="userid" placeholder="" value="<%= svid %>">
                 </div>
                 <div class="form-group">
                     <label for="userpwd">비밀번호</label>

@@ -1,12 +1,16 @@
 package com.ssafy.backend.servlet;
 
 import java.io.IOException;
+import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ssafy.backend.dto.User;
 
@@ -27,7 +31,7 @@ public class MainServlet extends HttpServlet {
 	}
 	
 	
-    /**
+    /** 
      * post 방식의 요청에 대해 응답하는 메서드이다.
      * front controller pattern을 적용하기 위해 내부적으로 process를 호출한다.
      */
@@ -49,13 +53,19 @@ public class MainServlet extends HttpServlet {
 		case "regist":
 			doRegist(request, response);
 			break;
+		case "login":
+			doLogIn(request,response);
+			break;
+		case "logout":
+			doLogOut(request,response);
+			break;
 		}
 	}
 	
     /**
-     * 사용자 정보를 등록하기 위해 파라미터가 잘 전달되는지 확인하고 전달 결과를 화면에 출력한다.
-     * 이를 위해 request에서 전달 받은 내용을 추출해서 User 객체를 생성한 후 response로 출력한다.
-     * 특히 response 시 content의 형식에 주의한다.
+     * 클라이언트에서 전달된 request를 분석한 결과를 regist_result.jsp에서 볼 수 있도록 한다.
+     * RequestDispatcher를 사용해서 regist_result.jsp로 forward한다.
+     * 
      * @param request
      * @param response
      * @throws ServletException
@@ -63,6 +73,8 @@ public class MainServlet extends HttpServlet {
      */
 	private void doRegist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		System.out.println("doRegister");
 		// request 객체에서 전달된 parameter를 추출한다.
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
@@ -71,18 +83,84 @@ public class MainServlet extends HttpServlet {
 		// 문자열로 전달된 age는 숫자로 변환
 		int age = Integer.parseInt(request.getParameter("age"));
 		
-		// 전달받은 parameter를 이용해서 User 객체를 생성한다. 
-		User user = new User(id, password, name, email, age);
+		// 전달받은 파라미터를 request에 담는다.
+		request.setAttribute("id", id);
+		request.setAttribute("password", password);
+		request.setAttribute("name", name);
+		request.setAttribute("email", email);
+		request.setAttribute("age", age);
+
+		// JSP 화면 호출을 위해 RequestDispatcher의 forward를 사용한다.
+		// 이때 연결할 jsp의 이름을 넘겨준다. forward에서 /는 context root를 나타낸다.
+		RequestDispatcher disp = request.getRequestDispatcher("/regist_result.jsp");
+		disp.forward(request, response);
 		
-		// 화면에 출력할 데이터를 구성한다. 
-		StringBuilder output = new StringBuilder();
+	}
+	
+	/**
+	 * 클라이언트를 통해 전달된 id와 password를 이용해 user객체생성, 반환
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void doLogIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doLogin");
+		// form 의 input과 비교하여 작성
+		String id = request.getParameter("userid");
 		
-		output.append("<html><body>").append("<h1>사용자 정보</h1>").append(user.toString()).append("</body></html>");
+		System.out.println(id);
+		String password = request.getParameter("userpass");
+		String name = "김싸피";
+	
+		User user = new User();
+		user.setId(id);
+		user.setPassword(password);
+		user.setName(name);
+		System.out.println(user.getId());
+		// 응답헤더에 쿠키 객체를 추가한다. 개발자 도구를 통해 쿠키가 존재하는지 확인해본다.
+		Cookie userId = new Cookie("userId" , id);
+		// 쿠키 소멸 시간 설정 ( 1일 )
+		userId.setMaxAge(60*60*24);
+		// 응답 헤더에 쿠키 추가
+		response.addCookie(userId);
 		
-		// response 객체를 통해서 생성한 html코드를 출력한다.
-		// 응답이 어떤 타입인지 설정
-		response.setContentType("text/html; charset=UTF-8");
-		response.getWriter().write(output.toString());
+		String msg = "로그인 성공!";
 		
+		// session 가져오기
+		HttpSession session = request.getSession();
+		
+		// id, password 비교하여 동작 구분
+		if(id.equals("ssafy") && password.equals("1234")) {
+			// id, password가 일치하면 session에 사용자 정보 저장
+			session.setAttribute("loginUser", user);
+		} else {
+			// 일치하지 않으면 로그인 실패 메시지 변경
+			msg = "로그인 실패!";
+		}
+		// 로그인 결과 request 에 전달
+		request.setAttribute("msg", msg);
+		
+		RequestDispatcher disp = request.getRequestDispatcher("/regist.jsp");
+		disp.forward(request, response);
+
+	}
+	
+	/**
+	 * 로그아웃 동작 정의
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	private void doLogOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		// session 가져오기
+		HttpSession session = request.getSession();
+		
+		// session 만료시키기
+		session.invalidate();
+		
+		// 리다이렉트 시키기
+		response.sendRedirect("./regist.jsp");
 	}
 }

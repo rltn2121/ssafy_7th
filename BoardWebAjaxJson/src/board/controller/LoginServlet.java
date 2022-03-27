@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		if(userDto != null) {
 			// 로그인 성공
 			HttpSession session = request.getSession();
-			session.setAttribute("userEmail", userEmail);
+			session.setAttribute("userDto", userDto);
 
 			// JSON 형식으로 생성
 			Gson gson = new Gson();
