@@ -1,8 +1,0 @@
-package board.dao;
-
-import board.dto.UserDto;
-
-public interface UserDao {
-	public UserDto register(String userEmail);
-}
-insert into users (USER_NAME, USER_PASSWORD,USER_EMAIL, USER_REGISTER_DATE) values ('홍길동', '1234', 'hong@gildong.com', now());

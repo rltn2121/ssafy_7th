@@ -43,6 +43,8 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\박기수\Downloads\소스코드\220329\guestbook_mvc2_0328_live"/>
+			<item value="C:\Users\박기수\Downloads\소스코드\220328\guestbook_mvc_배포"/>
 			<item value="C:\Users\박기수\Downloads\소스코드\220324\day3(0324)_배포\guestbook_mvc"/>
 			<item value="C:\Users\박기수\Downloads\소스코드\220324\day3(0324)_배포\guestbook_bean"/>
 			<item value="C:\Users\박기수\Downloads\소스코드\220324\guestbook_mvc_sol"/>

@@ -2,12 +2,16 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="recId" key="selection"/>
+		<item value=".png" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value=".png"/>
+			<item value="system"/>
+			<item value="tbodyAptTrad"/>
+			<item value="articleno"/>
 			<item value="redId"/>
 			<item value="redirect"/>
 			<item value="session"/>
@@ -19,10 +23,6 @@
 			<item value="red"/>
 			<item value="srcIdx"/>
 			<item value="arrIdx"/>
-			<item value="now"/>
-			<item value="bw.write"/>
-			<item value="System.out.print"/>
-			<item value="sb.append"/>
 		</list>
 		<list key="replacehistory">
 			<item value="recId"/>

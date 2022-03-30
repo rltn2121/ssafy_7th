@@ -83,7 +83,6 @@ public class ShopDaoImpl implements ShopDao{
 		}
 		DBManager.releaseConnection(pstmt, con);
 		return list;
-		
 	}
 
 	@Override
@@ -110,8 +109,6 @@ public class ShopDaoImpl implements ShopDao{
 		}
 		DBManager.releaseConnection(pstmt, con);
 		return list;
-		
 	}
-
 }
 
