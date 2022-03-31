@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value=".png" key="selection"/>
+		<item value="// New for FileUpload, CKEditor" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value=".png"/>
-			<item value="system"/>
-			<item value="tbodyAptTrad"/>
-			<item value="articleno"/>
-			<item value="redId"/>
+			<item value="// New for FileUpload, CKEditor"/>
+			<item value="btnInsertPage"/>
+			<item value="글쓰기"/>
+			<item value="boardInsert"/>
+			<item value="get"/>
+			<item value="로그아웃"/>
+			<item value="수정"/>
+			<item value="검색"/>
+			<item value="t"/>
+			<item value="실거래가"/>
+			<item value="회원정보"/>
+			<item value="정보"/>
 			<item value="redirect"/>
-			<item value="session"/>
-			<item value="j&lt;N"/>
-			<item value="[N][N]"/>
-			<item value="char["/>
-			<item value="success = true;"/>
-			<item value="q.add(map)"/>
-			<item value="red"/>
-			<item value="srcIdx"/>
-			<item value="arrIdx"/>
+			<item value="r"/>
+			<item value=".png"/>
 		</list>
 		<list key="replacehistory">
 			<item value="recId"/>
