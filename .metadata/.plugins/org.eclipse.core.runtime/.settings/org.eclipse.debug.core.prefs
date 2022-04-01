@@ -1,3 +1,3 @@
 eclipse.preferences.version=1
 org.eclipse.debug.core.USE_STEP_FILTERS=true
-prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="lion"/>\r\n</watchExpressions>\r\n
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="x"/>\r\n<expression enabled\="true" text\="y"/>\r\n<expression enabled\="true" text\="nx"/>\r\n<expression enabled\="true" text\="ny"/>\r\n<expression enabled\="true" text\="nx&lt;0||nx&gt;\=N||ny&lt;0||ny&gt;\=M"/>\r\n<expression enabled\="true" text\="nx&gt;\=N"/>\r\n<expression enabled\="true" text\="nx&lt;0"/>\r\n<expression enabled\="true" text\="ny&lt;0"/>\r\n<expression enabled\="true" text\="ny&gt;\=M"/>\r\n<expression enabled\="true" text\="cmd"/>\r\n<expression enabled\="true" text\="dir"/>\r\n<expression enabled\="true" text\="dice"/>\r\n</watchExpressions>\r\n
