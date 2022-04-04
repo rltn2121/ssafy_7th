@@ -241,6 +241,8 @@ $(document).ready(function(){
 
 /// stringify(obj) parse(json)
 function boardList(){
+	let url = '<%= contextPath %>/board/boardList';
+	let urlParams = '?limit=' + LIST_ROW_COUNT + '&offset=' + OFFSET + "&searchWord=" + SEARCH_WORD;
 	$.ajax(
 	{
         type : 'get',
