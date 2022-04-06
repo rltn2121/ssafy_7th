@@ -50,7 +50,6 @@
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="com.ssafy.service.HouseServiceImpl"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="com.google.gson.Gson"/>
 <fullyQualifiedTypeName name="com.ssafy.dto.Dong"/>
 <fullyQualifiedTypeName name="com.ssafy.dto.HouseDeal"/>
 <fullyQualifiedTypeName name="com.ssafy.dao.UserDaoImpl"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="ps_java.b_3190.Point"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
 <fullyQualifiedTypeName name="java.util.Queue"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
 </qualifiedTypeNameHistroy>

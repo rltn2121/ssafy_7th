@@ -22,6 +22,11 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	LoginService service = LoginServiceImpl.getInstance();
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Login Servlet : doGet()");
+		response.sendRedirect(request.getContextPath()+"/jsp/login.jsp");
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

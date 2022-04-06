@@ -5,17 +5,17 @@
 	<item value="226" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth1"/>
 	<item value="104" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth0"/>
 	<section name="conditionHistory">
-		<item value="temp.equals(&quot;2211111111&quot;)" key="conditionHistoryEntry_8"/>
-		<item value="num==2211111111" key="conditionHistoryEntry_9"/>
-		<item value="answer[10] == 2" key="conditionHistoryEntry_6"/>
-		<item value="now.x==2&amp;&amp;now.y==1" key="conditionHistoryEntry_7"/>
+		<item value="answer[10] == 2" key="conditionHistoryEntry_8"/>
+		<item value="now.x==2&amp;&amp;now.y==1" key="conditionHistoryEntry_9"/>
+		<item value="t==19" key="conditionHistoryEntry_6"/>
+		<item value="t==20" key="conditionHistoryEntry_7"/>
 		<item value="10" key="conditionHistoryEntryCount"/>
-		<item value="now.x==0||now.y==7" key="conditionHistoryEntry_0"/>
-		<item value="ans==13" key="conditionHistoryEntry_1"/>
-		<item value="t==19" key="conditionHistoryEntry_4"/>
-		<item value="t==20" key="conditionHistoryEntry_5"/>
-		<item value="ans==10" key="conditionHistoryEntry_2"/>
-		<item value="move==49" key="conditionHistoryEntry_3"/>
+		<item value="j==9" key="conditionHistoryEntry_0"/>
+		<item value="now.x==8&amp;&amp;now.y==9&#x0D;&#x0A;" key="conditionHistoryEntry_1"/>
+		<item value="ans==10" key="conditionHistoryEntry_4"/>
+		<item value="move==49" key="conditionHistoryEntry_5"/>
+		<item value="now.x==0||now.y==7" key="conditionHistoryEntry_2"/>
+		<item value="ans==13" key="conditionHistoryEntry_3"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.debug.ui.ExpressionInformationControlCreator$ExpressionInformationControl">
 		<item value="500" key="SashWeightTree"/>

@@ -1,6 +1,0 @@
-127.0.0.1 - - [11/Mar/2022:09:16:27 +0900] "GET / HTTP/1.1" 200 191
-0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:16:34 +0900] "GET /WebBasic/SimpleJsonListServlet HTTP/1.1" 200 204
-0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:16:35 +0900] "GET /WebBasic/SimpleJsonListServlet HTTP/1.1" 200 204
-0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:16:35 +0900] "GET /WebBasic/SimpleJsonListServlet HTTP/1.1" 200 204
-0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:17:00 +0900] "GET /WebBasic/SimpleJsonListServlet HTTP/1.1" 200 204
-0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:29:18 +0900] "GET /WebBasic/SimpleJsonListServlet?userId=ssafy&msg=hi HTTP/1.1" 200 204

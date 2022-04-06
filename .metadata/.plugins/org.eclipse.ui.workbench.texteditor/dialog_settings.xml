@@ -6,12 +6,15 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="// New for FileUpload, CKEditor" key="selection"/>
+		<item value="timeout" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="timeout"/>
+			<item value="parse(json)"/>
+			<item value="fetchoptions"/>
 			<item value="// New for FileUpload, CKEditor"/>
 			<item value="btnInsertPage"/>
 			<item value="글쓰기"/>
@@ -24,9 +27,6 @@
 			<item value="실거래가"/>
 			<item value="회원정보"/>
 			<item value="정보"/>
-			<item value="redirect"/>
-			<item value="r"/>
-			<item value=".png"/>
 		</list>
 		<list key="replacehistory">
 			<item value="recId"/>

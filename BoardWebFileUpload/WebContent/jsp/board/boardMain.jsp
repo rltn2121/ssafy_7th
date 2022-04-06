@@ -177,16 +177,16 @@ $(document).ready(function(){
 	
 	boardList();
 	
-	$("#btnSearchWord").click(function(){
+	document.querySelector("#btnSearchWord").onclick = function(){
 
-		SEARCH_WORD = $("#inputSearchWord").val();
+		SEARCH_WORD = document.querySelector("#inputSearchWord").value;
 		// 처음 페이지로 초기화
 		OFFSET = 0;
 		CURRENT_PAGE_INDEX = 1;
 		
 		boardList();
 		
-	});
+	}
 
 	
 	// insert Page
@@ -233,60 +233,95 @@ $(document).ready(function(){
 				boardDelete();
  			},
 			function(){
- 				console.l og('cancel');
+ 				console.log('cancel');
 			}
 		);
 	});
 });
 
 /// stringify(obj) parse(json)
-function boardList(){
+async function boardList(){
 	let url = '<%= contextPath %>/board/boardList';
 	let urlParams = '?limit=' + LIST_ROW_COUNT + '&offset=' + OFFSET + "&searchWord=" + SEARCH_WORD;
-	$.ajax(
-	{
-        type : 'get',
-        url : '<%=contextPath%>/board/boardList',
-        dataType : 'json',
-        data : 
-		{
-        	limit: LIST_ROW_COUNT,
-			offset: OFFSET,
-			searchWord: SEARCH_WORD
-		},
-        success : function(data, status, xhr) { 
-        	makeListHtml(data);
-        }, 
-        error: function(jqXHR, textStatus, errorThrown) 
-        { 
-        	alertify.error(' 글 조회 과정에 문제가 생겼습니다.');
-			console.log(jqXHR);
-        }
-    });
-}
-
-function makeListHtml(list){
-
-	$("#boardTbody").html("");
-
-	for( var i=0; i<list.length; i++){
 	
-		var boardId = list[i].boardId;
-		var userName = list[i].userName;
-		var title = list[i].title;
-		var content = list[i].content;
-		var regDt = list[i].regDt;	// javascript of parsed from LocalDateTime
-		
-		var regDtStr = makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, '.');
-		
-		var readCount = list[i].readCount;
-		
-		var listHtml =
-			'<tr style="cursor:pointer" data-boardId=' + boardId +'><td>' + boardId + '</td><td>' + title + '</td><td>' + userName + '</td><td>' + regDtStr + '</td><td>' + readCount + '</td></tr>';
-
-		$("#boardTbody").append(listHtml);
+	let fetchOptions = {
+			method: 'GET',
+			headers: {
+				'async': 'true'	// 비동기 요청을 위한 약속
+			}
 	}
 	
+	try{
+		let response = await fetch(url + urlParams, fetchOptions);	
+		let data = await response.json();
+		
+		// 백엔드 로그인 필터에서 session timeout이 발생하면 내려주는 json 값
+		if(data.result == "login"){
+			window.location.href ="<%=contextPath%>/login"; 
+		}
+		
+		else{
+			makeListHtml(data);
+		}
+	} catch(error) {
+		console.log(error);
+		alertify.error('글 조회 과정에 문제가 생겼습니다.');
+	}
+
+}
+
+
+<%--
+$.ajax(
+{
+    type : 'get',
+    url : '<%=contextPath%>/board/boardList',
+    dataType : 'json',
+    data : 
+	{
+    	limit: LIST_ROW_COUNT,
+		offset: OFFSET,
+		searchWord: SEARCH_WORD
+	},
+    success : function(data, status, xhr) { 
+    	makeListHtml(data);
+    }, 
+    error: function(jqXHR, textStatus, errorThrown) 
+    { 
+    	alertify.error(' 글 조회 과정에 문제가 생겼습니다.');
+		console.log(jqXHR);
+    }
+});
+--%>
+function makeListHtml(list){
+
+	//$("#boardTbody").html("");
+	let listHTML = ``;
+
+	
+	list.forEach(el => {
+		let boardId = el.boardId;
+		let userName = el.userName;
+		let title = el.title;
+		let content = el.content;
+		let regDt = el.regDt;	// javascript of parsed from LocalDateTime
+		console.log(regDt);
+		let regDtStr = makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, '.');
+		
+		let readCount = el.readCount;
+		
+		listHTML +=
+			`<tr style="cursor:pointer" data-boardId=\${boardId}>
+				<td>\${boardId}</td>
+				<td>\${title}</td>
+				<td>\${userName}</td>
+				<td>\${regDtStr}</td>
+				<td>\${readCount}</td>
+			</tr>`;
+
+	});
+	
+	document.querySelector("#boardTbody").innerHTML = listHTML;
 	makeListHtmlEventHandler();
 	
 	boardListTotalCnt();

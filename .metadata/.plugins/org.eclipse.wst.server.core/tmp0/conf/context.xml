@@ -22,33 +22,16 @@
     <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
 
+	
+  
+
+  	<Resource name="jdbc/board" auth="Container" type="javax.sql.DataSource" 
+        initialSize="2" maxTotal="100" maxIdle="30" maxWaitMillis="10000" 
+        username="root" password="5ab5c87a" driverClassName="com.mysql.cj.jdbc.Driver"     
+        url="jdbc:mysql://localhost:3306/board?serverTimezone=Asia/Seoul&amp;useUniCode=yes&amp;characterEncoding=UTF-8"/>
+	
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+    <!--
     <Manager pathname="" />
-    
-    <Resource name="jdbc/board" auth="Container" type="javax.sql.DataSource" 
-            initialSize="2" 
-            username="root" password="5ab5c87a" driverClassName="com.mysql.cj.jdbc.Driver"     
-            url="jdbc:mysql://localhost:3306/board?serverTimezone=UTC&amp;useUniCode=yes&amp;characterEncoding=UTF-8"/>
+    -->
 </Context>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

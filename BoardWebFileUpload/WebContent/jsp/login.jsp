@@ -35,7 +35,7 @@ post with urlencoded
 		</div>
 		<div class="mb-3">
 		  <label for="userEmail" class="form-label">Email</label>
-		  <input type="email" class="form-control" id="userEmail" name="userEmail" value="dskim@my.com">
+		  <input type="email" class="form-control" id="userEmail" name="userEmail" value="hong@gildong.com">
 		</div>
 		<div class="mb-3">
 		  <label for="userPassword" class="form-label">제목</label>
