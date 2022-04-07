@@ -328,10 +328,12 @@ function makeListHtml(list){
 }
 
 function makeListHtmlEventHandler(){
-	$("#boardTbody tr").click(function(){
-		var boardId = $(this).attr("data-boardId");
-		var userSeq = '<%=userDto.getUserSeq()%>';
-		boardDetail(boardId, userSeq);
+	document.querySelectorAll("#boardTbody tr").forEach( el => {
+		el.onclick = function(){
+			var boardId = this.getAttribute("data-boardId");
+			//boardDetail(boardId);
+			alert(boardId);
+		}
 	});
 }
 
@@ -339,29 +341,62 @@ var PAGE_LINK_COUNT = 5;	// pagination link 갯수
 var TOTAL_LIST_ITEM_COUNT = 0;
 var CURRENT_PAGE_INDEX = 1;
 
-function boardListTotalCnt(){
-	
-	$.ajax(
-	{
-        type : 'get',
-        url : '<%=contextPath%>/board/boardListTotalCnt',
-        dataType : 'json',
-        data : 
-		{
-			searchWord: SEARCH_WORD
-		},
-        success : function(data, status, xhr) {
-        	TOTAL_LIST_ITEM_COUNT = data.totalCnt;
-        	addPagination();
-        }, 
-        error: function(jqXHR, textStatus, errorThrown) 
-        { 
-        	alertify.error(' 글 전체 수 조회 과정에 문제가 생겼습니다.');
-			console.log(jqXHR);
-        }
-    });
-}
 
+<%--
+async function boardListTocalCnt(){
+	let url = '<%=contextPath%>/board/boardListTotalCnt';
+	let urlParams = '?searchWord='+SEARCH_WORD;
+	let fetchOptions = {
+			method:'GET',
+			headers:{
+				'async':'true'
+			}
+	}
+	
+	try{
+		let response = await fetch(url + urlParams, fetchOptions);
+		let data = await response.json();
+		
+		if(data.result == "login"){
+			window.location.href = "<%=contextPath%>/login";
+		}
+		
+		else{
+			TOTAL_LIST_ITEM_COUNT = data.totalCnt;
+			addPagination();
+		}
+	} catch(error) {
+		console.log(error);
+		alertify.error(' 글 전체 수 조회 과정에 문제가 생겼습니다.');
+	}
+}
+--%>
+async function boardListTotalCnt(){
+    let url = '<%=contextPath%>/board/boardListTotalCnt';
+    let urlParams = '?searchWord=' + SEARCH_WORD;
+
+    let fetchOptions = {
+        method: 'GET',
+        headers: {
+            'async': 'true' // 비동기 요청을 위한 약속 mark
+        }
+    }
+
+    try{
+        let response = await fetch(url + urlParams, fetchOptions);
+        let data = await response.json();
+        if( data.result == "login" ){ // 백엔드 로그인 필터에서 session timeout 이 발생하면 내려주는 json 값
+            window.location.href = "<%=contextPath%>/login"; // 비동기 요청 X
+        }else{
+            TOTAL_LIST_ITEM_COUNT = data.totalCnt;
+            addPagination();
+        }
+
+    }catch(error){
+        console.log(error);
+        alertify.error('글 전체 수 조회 과정에 문제가 생겼습니다.');
+    }
+}
 function addPagination(){
 
 	makePaginationHtml(LIST_ROW_COUNT, PAGE_LINK_COUNT, CURRENT_PAGE_INDEX, TOTAL_LIST_ITEM_COUNT, "paginationWrapper" );

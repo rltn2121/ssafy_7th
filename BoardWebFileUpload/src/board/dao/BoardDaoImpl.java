@@ -3,11 +3,13 @@ package board.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import board.dto.BoardDto;
 import board.common.DBManager;
+import board.dto.BoardDto;
+import board.dto.BoardFileDto;
 
 //
 public class BoardDaoImpl implements BoardDao {
@@ -26,7 +28,7 @@ public class BoardDaoImpl implements BoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		int ret = -1;
+		int boardId = -1;
 		
 		try {
 			con = DBManager.getConnection();
@@ -35,12 +37,17 @@ public class BoardDaoImpl implements BoardDao {
 			sb.append("INSERT INTO BOARD ( USER_SEQ, TITLE, CONTENT, REG_DT, READ_COUNT ) ");
 			sb.append(" VALUES ( ?, ?, ?, now(), 0 ) ");
 
-			pstmt = con.prepareStatement(sb.toString());
+			pstmt = con.prepareStatement(sb.toString(), Statement.RETURN_GENERATED_KEYS);
 			pstmt.setInt(1,  boardDto.getUserSeq());
 			pstmt.setString(2,  boardDto.getTitle());
 			pstmt.setString(3,  boardDto.getContent());
 
-			ret = pstmt.executeUpdate();
+			pstmt.executeUpdate();
+			rs = pstmt.getGeneratedKeys();
+			rs.next();
+			
+			// auto increment 했을 때 생성되는 key 값 받기
+			boardId = rs.getInt(1);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -48,7 +55,7 @@ public class BoardDaoImpl implements BoardDao {
 			DBManager.releaseConnection(rs, pstmt, con);
 		}
 		
-		return ret;
+		return boardId;
 	}
 
 	@Override
@@ -305,6 +312,39 @@ public class BoardDaoImpl implements BoardDao {
 			DBManager.releaseConnection(rs, pstmt, con);
 		}
 		return boardDto;
+	}
+
+	@Override
+	public int boardFileInsert(BoardFileDto dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int ret = -1;
+		
+		try {
+			con = DBManager.getConnection();
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("INSERT INTO BOARD_FILE ( BOARD_ID, FILE_NAME, FILE_SIZE, FILE_CONTENT_TYPE, FILE_URL ) ");
+			sb.append(" VALUES ( ?, ?, ?, ?, ? ) ");
+
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1,  dto.getBoardId());
+			pstmt.setString(2,  dto.getFileName());
+			pstmt.setLong(3,  dto.getFileSize());
+			pstmt.setString(3,  dto.getFileContentType());
+			pstmt.setString(3,  dto.getFileUrl());
+
+			ret = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.releaseConnection(rs, pstmt, con);
+		}
+		
+		return ret;
 	}
 	
 }

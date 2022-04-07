@@ -1,6 +1,10 @@
 package board.service;
 
+import java.io.File;
+import java.util.Collection;
 import java.util.List;
+
+import javax.servlet.http.Part;
 
 import board.dao.BoardDao;
 import board.dao.BoardDaoImpl;
@@ -23,11 +27,6 @@ public class BoardServiceImpl implements BoardService {
 	
 	BoardDao dao = BoardDaoImpl.getInstance();
 	
-	@Override
-	public int boardInsert(BoardDto dto) {
-		return dao.boardInsert(dto);
-	}
-
 	@Override
 	public int boardUpdate(BoardDto dto) {
 		return dao.boardUpdate(dto);
@@ -73,6 +72,28 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int boardListSearchWordTotalCnt(String searchWord) {
 		return dao.boardListSearchWordTotalCnt(searchWord);
+	}
+
+
+	// FileUpload
+	String uploadFolder = "upload";
+	@Override
+	public int boardInsert(BoardDto dto, Collection<Part> parts, String uploadPath) {
+		// 첨부파일이 있을 경우 board_file 테이블에 삽입
+		int boardId = dao.boardInsert(dto);
+		if(boardId < 0) return boardId;
+		
+		// 물리적인 파일 저장
+		File uploadDir = new File(uploadPath + File.separator + uploadFolder);
+		if(!uploadDir.exists())
+			uploadDir.mkdir();
+		
+		for(Part part : parts) {
+			
+		}
+		
+		
+		return null;
 	}
 
 }

@@ -1,5 +1,6 @@
 package board.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -28,6 +29,17 @@ public class BoardServlet extends HttpServlet {
 	
 	// met
 	BoardService service = BoardServiceImpl.getInstance();
+	String uploadPath;
+	
+	@Override
+	public void init() {
+		// production mode
+//		uploadPath = getServletContext().getRealPath("/");
+		
+		// development mode
+		uploadPath = "C:"+File.separator+"SSAFY"+File.separator + "ssafy_live" + File.separator + "BoardWebFileUpload" + File.separator + "WebContent";
+		System.out.println("uploadPth : " + uploadPath);
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -119,7 +131,9 @@ public class BoardServlet extends HttpServlet {
 		boardDto.setTitle(request.getParameter("title"));
 		boardDto.setContent(request.getParameter("content"));
 		
-		int ret = service.boardInsert(boardDto);
+		// service layer에게 게시글 관련 내용과 첨부파일 내용과 업로드 기본 경로 전달
+		//int ret = service.boardInsert(boardDto, request.getParts());
+		int ret = service.boardInsert(boardDto, request.getParts(), uploadPath);
 		
 		// 응답을 만들어서 클라이언트에게 전달
 		Gson gson = new Gson();

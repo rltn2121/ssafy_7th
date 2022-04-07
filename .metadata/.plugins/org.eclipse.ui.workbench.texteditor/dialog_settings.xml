@@ -6,12 +6,14 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="timeout" key="selection"/>
+		<item value="*" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="*F"/>
+			<item value="*"/>
 			<item value="timeout"/>
 			<item value="parse(json)"/>
 			<item value="fetchoptions"/>
@@ -25,8 +27,6 @@
 			<item value="검색"/>
 			<item value="t"/>
 			<item value="실거래가"/>
-			<item value="회원정보"/>
-			<item value="정보"/>
 		</list>
 		<list key="replacehistory">
 			<item value="recId"/>
