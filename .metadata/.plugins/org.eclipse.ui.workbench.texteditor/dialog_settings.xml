@@ -6,27 +6,27 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="*" key="selection"/>
+		<item value="boardDetail" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="boardDetail"/>
+			<item value="boardinsert"/>
+			<item value="titleInsert"/>
+			<item value="const fileArray = Array.form(files);"/>
+			<item value="validateInsert"/>
+			<item value="chkFileUploadInsert"/>
+			<item value="imgfileupload"/>
+			<item value="imgFileUploadInsertWrapper"/>
+			<item value="diveditorinsert"/>
 			<item value="*F"/>
 			<item value="*"/>
 			<item value="timeout"/>
 			<item value="parse(json)"/>
 			<item value="fetchoptions"/>
 			<item value="// New for FileUpload, CKEditor"/>
-			<item value="btnInsertPage"/>
-			<item value="글쓰기"/>
-			<item value="boardInsert"/>
-			<item value="get"/>
-			<item value="로그아웃"/>
-			<item value="수정"/>
-			<item value="검색"/>
-			<item value="t"/>
-			<item value="실거래가"/>
 		</list>
 		<list key="replacehistory">
 			<item value="recId"/>

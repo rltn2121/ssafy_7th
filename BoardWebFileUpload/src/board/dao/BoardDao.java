@@ -19,4 +19,5 @@ public interface BoardDao {
 	public int boardListSearchWordTotalCnt(String searchWord);
 	
 	public int boardFileInsert(BoardFileDto dto);
+	public List<BoardFileDto> boardDetailFileList(int boardId);
 }

@@ -16,12 +16,14 @@
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 	
-	<!-- jQuery 는  이번이 마지막. FileUpload 부터는 fetch 사용. Bootstrap 5는 더이상 아래의 jQuery 를 필요로 하지 않는다. -->
-	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
 	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.12.0/build/alertify.min.js"></script>
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.12.0/build/css/alertify.min.css"/>
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.12.0/build/css/themes/default.min.css"/>
+	
+	<!-- New for FileUpload, CKEditor -->
+	<link rel="stylesheet" href="<%= contextPath %>/css/common.css">
+	<script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
+	<!-- / New for FileUpload, CKEditor -->	
 </head>
 <body>
 
@@ -95,8 +97,23 @@
 		</div>
 		<div class="mb-3">
 		  <label for="contentInsert" class="form-label">내용</label>
-		  <textarea class="form-control" id="contentInsert" rows="5"></textarea>  
+		  <!-- New for FileUpload, CKEditor -->
+		  <div id="divEditorInsert"></div>  
 		</div>
+		
+		<div class="mb-3">
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="chkFileUploadInsert">
+			  <label class="form-check-label" for="chkFileUploadInsert">파일 추가</label>
+			</div>
+		</div>
+		
+		<div class="mb-3" style="display:none;" id="imgFileUploadInsertWrapper">
+			<input type="file" id="inputFileUploadInsert" multiple>
+			<div id="imgFileUploadInsertThumbnail" class="thumbnail-wrapper"></div>
+		</div>
+		
+		
 		<button id="btnBoardInsert" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button">등록</button>
 
       </div>      
@@ -150,7 +167,8 @@
 		</div>
 		<div class="mb-3">
 		  <label for="contentUpdate" class="form-label">내용</label>
-		  <textarea class="form-control" id="contentUpdate" rows="5"></textarea>  
+		  <!-- New for FileUpload, CKEditor -->
+		  <div id="divEditorUpdate"></div>  
 		</div>
 		<button id="btnBoardUpdate" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button">수정</button>
 
@@ -173,7 +191,19 @@ var LIST_ROW_COUNT = 10;	//limit
 var OFFSET = 0;   // limit 10 offet 10
 var SEARCH_WORD = "";
 
-$(document).ready(function(){
+var PAGE_LINK_COUNT = 10;	// pagination link 갯수
+var TOTAL_LIST_ITEM_COUNT = 0;
+var CURRENT_PAGE_INDEX = 1;
+
+<!-- New for FileUpload, CKEditor -->
+var CKEditorInsert;
+var CKEditorUpdate;
+
+
+window.onload = function(){
+	
+	<!-- New for FileUpload, CKEditor -->
+	initCKEditor();
 	
 	boardList();
 	
@@ -188,8 +218,24 @@ $(document).ready(function(){
 		
 	}
 
-	
+	// New for FileUpload, CKEditor
 	// insert Page
+	document.querySelector("#btnInsertPage").onclick = function(){
+		document.querySelector("#titleInsert").value = "";
+		CKEditorInsert.setData("");
+		
+		document.querySelector("#chkFileUploadInsert").checked = false;
+		document.querySelector("#inputFileUploadInsert").value = "";
+		document.querySelector("#imgFileUploadInsertThumbnail").innerHTML = "";
+		document.querySelector("#imgFileUploadInsertWrapper").style.display = "none";
+		
+		let modal = new bootstrap.Modal(
+			document.querySelector("#boardInsertModal")
+		);
+		
+		modal.show();
+	}
+/*	
 	$("#btnInsertPage").click(function(){
 		
 		$("#titleInsert").val("");
@@ -197,15 +243,38 @@ $(document).ready(function(){
 		
 		$("#boardInsertModal").modal("show");
 	});
-	
+	*/
 	// insert
-	$("#btnBoardInsert").click(function(){
+	document.querySelector("#btnBoardInsert").onclick = function(){
 		
 		if( validateInsert() ){
 			boardInsert();
 		}
-	});
+	};
+
+	document.querySelector("#chkFileUploadInsert").onchange = function(){
+		if( this.checked ){
+			document.querySelector("#imgFileUploadInsertWrapper").style.display = "block";
+		}else{
+			document.querySelector("#chkFileUploadInsert").checked = false;
+			document.querySelector("#imgFileUploadInsertThumbnail").innerHTML = "";
+			document.querySelector("#imgFileUploadInsertWrapper").style.display = "none";
+		}
+	}
 	
+	document.querySelector("#inputFileUploadInsert").onchange = function(e){
+		const fileArray = Array.from(this.files);
+		fileArray.forEach( file => {
+			let reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = function(e){
+				let thumbnailHTML = `<img src="\${e.target.result}">`;
+				document.querySelector("#imgFileUploadInsertThumbnail").insertAdjacentHTML("beforeend", thumbnailHTML);
+			}
+		});
+	}
+
+/*
 	// update
 	$("#btnBoardUpdateForm").click(function(){
 		
@@ -237,69 +306,55 @@ $(document).ready(function(){
 			}
 		);
 	});
-});
+*/	
+}
+
+// New for FileUpload, CKEditor
+async function initCKEditor(){
+	try{
+        CKEditorInsert = await ClassicEditor.create( document.querySelector( '#divEditorInsert' ) );
+        CKEditorUpdate = await ClassicEditor.create( document.querySelector( '#divEditorUpdate' ) );
+      }catch(error){
+        console.error(error);
+      }	
+}
 
 /// stringify(obj) parse(json)
 async function boardList(){
-	let url = '<%= contextPath %>/board/boardList';
+	let url = '<%=contextPath%>/board/boardList';
 	let urlParams = '?limit=' + LIST_ROW_COUNT + '&offset=' + OFFSET + "&searchWord=" + SEARCH_WORD;
 	
 	let fetchOptions = {
-			method: 'GET',
-			headers: {
-				'async': 'true'	// 비동기 요청을 위한 약속
-			}
+		method: 'GET',
+		headers: {
+			'async': 'true' // 비동기 요청을 위한 약속 mark
+		}
 	}
 	
 	try{
-		let response = await fetch(url + urlParams, fetchOptions);	
+		let response = await fetch(url + urlParams, fetchOptions);
 		let data = await response.json();
-		
-		// 백엔드 로그인 필터에서 session timeout이 발생하면 내려주는 json 값
-		if(data.result == "login"){
-			window.location.href ="<%=contextPath%>/login"; 
-		}
-		
-		else{
+		if( data.result == "login" ){ // 백엔드 로그인 필터에서 session timeout 이 발생하면 내려주는 json 값
+			window.location.href = "<%=contextPath%>/login"; // 비동기 요청 X
+		}else{
 			makeListHtml(data);
 		}
-	} catch(error) {
+		
+	}catch(error){
 		console.log(error);
 		alertify.error('글 조회 과정에 문제가 생겼습니다.');
 	}
 
 }
 
-
-<%--
-$.ajax(
-{
-    type : 'get',
-    url : '<%=contextPath%>/board/boardList',
-    dataType : 'json',
-    data : 
-	{
-    	limit: LIST_ROW_COUNT,
-		offset: OFFSET,
-		searchWord: SEARCH_WORD
-	},
-    success : function(data, status, xhr) { 
-    	makeListHtml(data);
-    }, 
-    error: function(jqXHR, textStatus, errorThrown) 
-    { 
-    	alertify.error(' 글 조회 과정에 문제가 생겼습니다.');
-		console.log(jqXHR);
-    }
-});
---%>
 function makeListHtml(list){
 
+	console.log(list);
+	
 	//$("#boardTbody").html("");
 	let listHTML = ``;
 
-	
-	list.forEach(el => {
+	list.forEach( el => {
 		let boardId = el.boardId;
 		let userName = el.userName;
 		let title = el.title;
@@ -308,20 +363,17 @@ function makeListHtml(list){
 		console.log(regDt);
 		let regDtStr = makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, '.');
 		
-		let readCount = el.readCount;
+		let readCount = el.readCount;		
 		
 		listHTML +=
-			`<tr style="cursor:pointer" data-boardId=\${boardId}>
-				<td>\${boardId}</td>
-				<td>\${title}</td>
-				<td>\${userName}</td>
-				<td>\${regDtStr}</td>
-				<td>\${readCount}</td>
-			</tr>`;
-
-	});
+			`<tr style="cursor:pointer" data-boardId=\${boardId}><td>\${boardId}</td><td>\${title}</td><td>\${userName}</td>
+				<td>\${regDtStr}</td><td>\${readCount}</td></tr>`;
+		
+	} );
 	
 	document.querySelector("#boardTbody").innerHTML = listHTML;
+	
+	
 	makeListHtmlEventHandler();
 	
 	boardListTotalCnt();
@@ -330,73 +382,39 @@ function makeListHtml(list){
 function makeListHtmlEventHandler(){
 	document.querySelectorAll("#boardTbody tr").forEach( el => {
 		el.onclick = function(){
-			var boardId = this.getAttribute("data-boardId");
-			//boardDetail(boardId);
-			alert(boardId);
+			var boardId = this.getAttribute("data-boardId");	
+			boardDetail(boardId);
 		}
 	});
 }
 
-var PAGE_LINK_COUNT = 5;	// pagination link 갯수
-var TOTAL_LIST_ITEM_COUNT = 0;
-var CURRENT_PAGE_INDEX = 1;
-
-
-<%--
-async function boardListTocalCnt(){
+async function boardListTotalCnt(){
 	let url = '<%=contextPath%>/board/boardListTotalCnt';
-	let urlParams = '?searchWord='+SEARCH_WORD;
+	let urlParams = '?searchWord=' + SEARCH_WORD;
+	
 	let fetchOptions = {
-			method:'GET',
-			headers:{
-				'async':'true'
-			}
+		method: 'GET',
+		headers: {
+			'async': 'true' // 비동기 요청을 위한 약속 mark
+		}
 	}
 	
 	try{
 		let response = await fetch(url + urlParams, fetchOptions);
 		let data = await response.json();
-		
-		if(data.result == "login"){
-			window.location.href = "<%=contextPath%>/login";
-		}
-		
-		else{
+		if( data.result == "login" ){ // 백엔드 로그인 필터에서 session timeout 이 발생하면 내려주는 json 값
+			window.location.href = "<%=contextPath%>/login"; // 비동기 요청 X
+		}else{
 			TOTAL_LIST_ITEM_COUNT = data.totalCnt;
-			addPagination();
+        	addPagination();
 		}
-	} catch(error) {
+		
+	}catch(error){
 		console.log(error);
-		alertify.error(' 글 전체 수 조회 과정에 문제가 생겼습니다.');
+		alertify.error('글 전체 수 조회 과정에 문제가 생겼습니다.');
 	}
 }
---%>
-async function boardListTotalCnt(){
-    let url = '<%=contextPath%>/board/boardListTotalCnt';
-    let urlParams = '?searchWord=' + SEARCH_WORD;
 
-    let fetchOptions = {
-        method: 'GET',
-        headers: {
-            'async': 'true' // 비동기 요청을 위한 약속 mark
-        }
-    }
-
-    try{
-        let response = await fetch(url + urlParams, fetchOptions);
-        let data = await response.json();
-        if( data.result == "login" ){ // 백엔드 로그인 필터에서 session timeout 이 발생하면 내려주는 json 값
-            window.location.href = "<%=contextPath%>/login"; // 비동기 요청 X
-        }else{
-            TOTAL_LIST_ITEM_COUNT = data.totalCnt;
-            addPagination();
-        }
-
-    }catch(error){
-        console.log(error);
-        alertify.error('글 전체 수 조회 과정에 문제가 생겼습니다.');
-    }
-}
 function addPagination(){
 
 	makePaginationHtml(LIST_ROW_COUNT, PAGE_LINK_COUNT, CURRENT_PAGE_INDEX, TOTAL_LIST_ITEM_COUNT, "paginationWrapper" );
@@ -414,14 +432,14 @@ function validateInsert(){
 	var isTitleInsertValid = false;
 	var isContentInsertValid = false;
 
-	var titleInsert = $("#titleInsert").val();
+	var titleInsert = document.querySelector("#titleInsert").value;
 	var titleInsertLength = titleInsert.length;
 	
 	if( titleInsertLength > 0 ){
 		isTitleInsertValid = true;
 	}
 	
-	var contentInsertValue = $("#contentInsert").val();
+	var contentInsertValue = CKEditorInsert.getData();
 	var contentInsertLength = contentInsertValue.length;
 	
 	if( contentInsertLength > 0 ){
@@ -435,8 +453,38 @@ function validateInsert(){
 	}
 }
 
-function boardInsert(){
-
+async function boardInsert(){
+	var formData = new FormData();
+	formData.append("title", document.querySelector("#titleInsert").value);
+	formData.append("content", CKEditorInsert.getData());
+	var files = document.querySelector("#inputFileUploadInsert").files;
+	const fileArray = Array.from(files);
+	fileArray.forEach(file => formData.append("file", file));
+	
+	var url = '<%= contextPath%>/board/boardInsert';
+	var fetchOptions = {
+			method: 'POST',
+			headers: {
+				'async': 'true'			
+			},
+			body: formData
+	}
+	try{
+		let response = await fetch(url, fetchOptions);
+		let data = await response.json();
+		if(data.result == "login") {
+			window.location.href = "<%=contextPath%>/login";
+		}
+		else{
+			alertify.success('글이 등록되었습니다.');
+			boardList();
+		}
+	} catch(error){
+		console.error(error);
+		alertify.error('글 등록 과정에 문제가 있습니다.')
+	}
+	
+	<%--
 	$.ajax(
 	{
         type : 'post',
@@ -462,12 +510,35 @@ function boardInsert(){
         	
         }
     });
+    --%>
 }
 
 // detail
-function boardDetail(boardId){
-
-	$.ajax(
+async function boardDetail(boardId){
+	var url = '<%= contextPath%>/board/boardDetail';
+	var urlParams = '?boardId='+boardId;
+	var fetchOptions = {
+			method: 'GET',
+			headers: {
+				'async':'true'
+			}
+	}
+	
+	try{
+		let response = await fetch(url + urlParams, fetchOptions);
+		let data = await response.json();
+		if(data.result == "login") {
+			window.location.href = "<%=contextPath%>/login";
+		}
+		else{
+			makeDetailHtml(data);
+		}
+	} catch(error){
+		console.error(error);
+		alertify.error('글 조회 과정에 문제가 있습니다.')
+	}
+	
+	<%-- $.ajax(
 	{
         type : 'get',
         url : '<%= contextPath%>/board/boardDetail',
@@ -486,6 +557,7 @@ function boardDetail(boardId){
 			console.log(jqXHR);
         }
     });
+    --%>
 }
 
 function makeDetailHtml(detail){

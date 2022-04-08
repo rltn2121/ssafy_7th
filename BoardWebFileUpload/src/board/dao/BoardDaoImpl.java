@@ -313,6 +313,48 @@ public class BoardDaoImpl implements BoardDao {
 		}
 		return boardDto;
 	}
+	@Override
+	public List<BoardFileDto> boardDetailFileList(int boardId) {
+		List<BoardFileDto> list = new ArrayList<BoardFileDto>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		BoardDto boardDto = null;
+		
+		try {
+			con = DBManager.getConnection();
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("SELECT BOARD_ID, FILE_ID, FILE_NAME, FILE_SIZE, FILE_CONTENT_TYPE, FILE_URL, REG_DT");
+			sb.append("  FROM BOARD_FILE ");
+			sb.append(" WHERE BOARD_ID = ? ");
+
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1,  boardId);
+	
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				BoardFileDto dto = new BoardFileDto();
+				dto.setBoardId(rs.getInt("BOARD_ID"));
+				dto.setFileId(rs.getInt("FILE_ID"));
+				dto.setFileName(rs.getString("FILE_NAME"));
+				dto.setFileSize(rs.getInt("FILE_SIZE"));
+				dto.setFileContentType(rs.getString("FILE_CONTENT_TYPE"));
+				dto.setFileUrl(rs.getString("FILE_URL"));
+				dto.setRegDt(rs.getTimestamp("REG_DT").toLocalDateTime());
+				list.add(dto);
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.releaseConnection(rs, pstmt, con);
+		}
+		return list;
+	}
 
 	@Override
 	public int boardFileInsert(BoardFileDto dto) {

@@ -1,14 +1,18 @@
 package board.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.Part;
 
+import board.common.FileManager;
 import board.dao.BoardDao;
 import board.dao.BoardDaoImpl;
 import board.dto.BoardDto;
+import board.dto.BoardFileDto;
 
 // Service Layer 의 리턴 값에 대한 개선 필요.
 // true / false 형태로 Service Layer 의 작업 결과에 대해 반한한다던가 하는 부분
@@ -41,6 +45,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardDto boardDetail(int boardId, int userSeq) {
 		BoardDto boardDto = dao.boardDetail(boardId);
+		List<BoardFileDto> files = dao.boardDetailFileList(boardId);
+		boardDto.setFileList(files);
 		// 해당 게시글이 현재 사용자가 작성한 글인지 확인
 		// userSeq는 세션에서 가져옴
 		if( boardDto.getUserSeq() == userSeq ) {
@@ -78,7 +84,7 @@ public class BoardServiceImpl implements BoardService {
 	// FileUpload
 	String uploadFolder = "upload";
 	@Override
-	public int boardInsert(BoardDto dto, Collection<Part> parts, String uploadPath) {
+	public int boardInsert(BoardDto dto, Collection<Part> parts, String uploadPath) throws IOException {
 		// 첨부파일이 있을 경우 board_file 테이블에 삽입
 		int boardId = dao.boardInsert(dto);
 		if(boardId < 0) return boardId;
@@ -89,11 +95,33 @@ public class BoardServiceImpl implements BoardService {
 			uploadDir.mkdir();
 		
 		for(Part part : parts) {
+			// 파일 명으로  첨부파일 구분
+			String fileName = FileManager.getFileName(part);
+			if("".equals(fileName))
+				continue;
+			
+			//
+			UUID uuid = UUID.randomUUID();
+			String extension = FileManager.getFileExtension(fileName);
+			String savingFileName = uuid + "." + extension;
+			
+			// 물리적인 파일 저장
+			part.write(uploadPath + File.separator + uploadFolder + File.separator + savingFileName);
+			
+			// board_file 테이블 저장
+			BoardFileDto boardFileDto = new BoardFileDto();
+			boardFileDto.setBoardId(boardId);
+			boardFileDto.setFileName(fileName);
+			boardFileDto.setFileSize(part.getSize());
+			boardFileDto.setFileContentType(part.getContentType());
+			
+			String boardFileUrl = uploadFolder + "/" + savingFileName;
+			boardFileDto.setFileUrl(boardFileUrl);
+			
+			dao.boardFileInsert(boardFileDto);
 			
 		}
-		
-		
-		return null;
+		return boardId;
 	}
 
 }

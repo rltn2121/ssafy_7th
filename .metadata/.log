@@ -12000,3 +12000,12 @@ java.io.IOException: 파이프가 닫히는 중입니다
 
 !ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2022-04-07 21:42:14.366
 !MESSAGE No repository found at http://download.eclipse.org/technology/m2e/releases/.
+
+!ENTRY org.eclipse.jface.text 2 0 2022-04-08 15:36:54.308
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.jface.text 2 0 2022-04-08 15:36:54.337
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.jface.text 2 0 2022-04-08 16:06:08.134
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'

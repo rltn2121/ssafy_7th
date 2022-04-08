@@ -13,9 +13,14 @@ public class BoardDto {
 	private String content;
 	private LocalDateTime regDt;
 	private int readCount;
-	
 	private boolean sameUser;
-
+	private List<BoardFileDto> fileList;
+	public List<BoardFileDto> getFileList() {
+		return fileList;
+	}
+	public void setFileList(List<BoardFileDto> fileList) {
+		this.fileList = fileList;
+	}
 	public BoardDto() {};
 	public BoardDto(int userSeq, String title, String content) {
 		this.userSeq = userSeq;

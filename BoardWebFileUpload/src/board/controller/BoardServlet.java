@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,11 @@ import board.service.BoardServiceImpl;
  * contextPath 고려
  */
 @WebServlet("/board/*")
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 5, 
+        maxRequestSize = 1024 * 1024 * 5 * 5
+)
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -37,13 +43,19 @@ public class BoardServlet extends HttpServlet {
 //		uploadPath = getServletContext().getRealPath("/");
 		
 		// development mode
-		uploadPath = "C:"+File.separator+"SSAFY"+File.separator + "ssafy_live" + File.separator + "BoardWebFileUpload" + File.separator + "WebContent";
-		System.out.println("uploadPth : " + uploadPath);
+		uploadPath = "C:"+File.separator
+				+"Users"+File.separator
+				+"박기수"+File.separator
+				+"Desktop"+File.separator
+				+"SSAFY"+File.separator
+				+"java"+File.separator
+				+"BoardWebFileUpload"+File.separator
+				+"WebContent";
+		System.out.println("uploadPath : " + uploadPath);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
@@ -121,30 +133,30 @@ public class BoardServlet extends HttpServlet {
 	}
 
 	private void boardInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		
+		// 1. 빈 객체 생성
 		BoardDto boardDto = new BoardDto();
-		// LoginFilter 먼저 적용 필요!!
+		
+		// 2. session에서 글쓴이(사용자) 정보 받아오기
+		//  - LoginFilter 먼저 적용 필요!!
 		HttpSession session = request.getSession();
 		UserDto userDto = (UserDto) session.getAttribute("userDto");
 		
+		// 3. 게시글 객체 생성
 		boardDto.setUserSeq(userDto.getUserSeq());
 		boardDto.setTitle(request.getParameter("title"));
 		boardDto.setContent(request.getParameter("content"));
 		
+		// 4. service 계층에게 전달
 		// service layer에게 게시글 관련 내용과 첨부파일 내용과 업로드 기본 경로 전달
-		//int ret = service.boardInsert(boardDto, request.getParts());
 		int ret = service.boardInsert(boardDto, request.getParts(), uploadPath);
 		
-		// 응답을 만들어서 클라이언트에게 전달
+		// 5. 응답을 만들어서 클라이언트에게 전달
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
 		
-		if (ret == 1) 
-			jsonObject.addProperty("result", "success");
-		else
-			jsonObject.addProperty("result", "fail");
+		if (ret == 1)	jsonObject.addProperty("result", "success");
+		else			jsonObject.addProperty("result", "fail");
 		String jsonStr = gson.toJson(jsonObject);
-		
 		response.getWriter().write(jsonStr);
 	}
 	
