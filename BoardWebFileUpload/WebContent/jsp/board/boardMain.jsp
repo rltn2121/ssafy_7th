@@ -140,6 +140,9 @@
             <tr><td>작성자</td><td id="userNameDetail">#</td></tr>
             <tr><td>작성일시</td><td id="regDtDetail">#</td></tr>
             <tr><td>조회수</td><td id="readCountDetail">#</td></tr>
+            
+            <tr><td colspan="2">첨부파일</td></tr>
+            <tr><td colspan="2" id="fileListDetail"></tr>
           </tbody>
         </table>
 		<button id="btnBoardUpdateForm" class="btn btn-sm btn-primary btn-outline" data-bs-dismiss="modal" type="button">글 수정하기</button>
@@ -170,6 +173,23 @@
 		  <!-- New for FileUpload, CKEditor -->
 		  <div id="divEditorUpdate"></div>  
 		</div>
+		<!-- 현재 첨부된 파일 정보 -->
+		<div class="mb-3">
+			첨부파일 : <span id="fileListUpdate"></span>
+		</div>
+		<!-- 새롭게 파일을 추가하는 UI -->
+		<div class="mb-3">
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="chkFileUploadUpdate">
+			  <label class="form-check-label" for="chkFileUploadUpdate">파일 변경</label>
+			</div>
+		</div>
+		
+		<div class="mb-3" style="display:none;" id="imgFileUploadUpdateWrapper">
+			<input type="file" id="inputFileUploadUpdate" multiple>
+			<div id="imgFileUploadUpdateThumbnail" class="thumbnail-wrapper"></div>
+		</div>
+		
 		<button id="btnBoardUpdate" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button">수정</button>
 
       </div>      
@@ -235,28 +255,20 @@ window.onload = function(){
 		
 		modal.show();
 	}
-/*	
-	$("#btnInsertPage").click(function(){
-		
-		$("#titleInsert").val("");
-		$("#contentInsert").val("");
-		
-		$("#boardInsertModal").modal("show");
-	});
-	*/
+
 	// insert
 	document.querySelector("#btnBoardInsert").onclick = function(){
 		
 		if( validateInsert() ){
 			boardInsert();
 		}
-	};
+	}
 
 	document.querySelector("#chkFileUploadInsert").onchange = function(){
 		if( this.checked ){
 			document.querySelector("#imgFileUploadInsertWrapper").style.display = "block";
 		}else{
-			document.querySelector("#chkFileUploadInsert").checked = false;
+			document.querySelector("#inputFileUploadInsert").value = "";
 			document.querySelector("#imgFileUploadInsertThumbnail").innerHTML = "";
 			document.querySelector("#imgFileUploadInsertWrapper").style.display = "none";
 		}
@@ -274,29 +286,65 @@ window.onload = function(){
 		});
 	}
 
-/*
+
 	// update
-	$("#btnBoardUpdateForm").click(function(){
+	document.querySelector("#btnBoardUpdateForm").onclick = function(){
 		
-		var boardId = $("#boardDetailModal").attr("data-boardId");
-		$("#boardUpdateModal").attr("data-boardId", boardId);
+		var boardId = document.querySelector("#boardDetailModal").getAttribute("data-boardId");
+		document.querySelector("#boardUpdateModal").setAttribute("data-boardId", boardId);
 		
-		$("#titleUpdate").val( $("#titleDetail").html() );
-		$("#contentUpdate").val( $("#contentDetail").html() );
+		document.querySelector("#titleUpdate").value = document.querySelector("#titleDetail").innerHTML;
+		// CKEditor
+		CKEditorUpdate.setData( document.querySelector("#contentDetail").innerHTML )
+		// FileUpload
+		let fileListHTML = ``;
+		document.querySelectorAll("#fileListDetail .fileName").forEach( el => {
+			fileListHTML += `<div class="fileName">\${el.innerHTML}</div>`;
+		})
+		document.querySelector("#fileListUpdate").innerHTML = fileListHTML;
 		
-		$("#boardDetailModal").modal("hide");
-		$("#boardUpdateModal").modal("show");
-	});
+		document.querySelector("#chkFileUploadUpdate").checked = false;
+		document.querySelector("#inputFileUploadUpdate").value = "";
+		document.querySelector("#imgFileUploadUpdateThumbnail").innerHTML = "";
+		document.querySelector("#imgFileUploadUpdateWrapper").style.display = "none";
+		
+		let detailModal = new bootstrap.Modal( document.querySelector("#boardDetailModal") );
+		detailModal.hide();
+		let updatelModal = new bootstrap.Modal( document.querySelector("#boardUpdateModal") );
+		updatelModal.show();
+	};
 	
-	$("#btnBoardUpdate").click(function(){
+	document.querySelector("#btnBoardUpdate").onclick = function(){
 		console.log(1)
 		if( validateUpdate() ){
 			boardUpdate();
 		}
-	});
+	};
+	
+	document.querySelector("#chkFileUploadUpdate").onchange = function(){
+		if( this.checked ){
+			document.querySelector("#imgFileUploadUpdateWrapper").style.display = "block";
+		}else{
+			document.querySelector("#inputFileUploadUpdate").value = "";
+			document.querySelector("#imgFileUploadUpdateThumbnail").innerHTML = "";
+			document.querySelector("#imgFileUploadUpdateWrapper").style.display = "none";
+		}
+	}
+	
+	document.querySelector("#inputFileUploadUpdate").onchange = function(e){
+		const fileArray = Array.from(this.files);
+		fileArray.forEach( file => {
+			let reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = function(e){
+				let thumbnailHTML = `<img src="\${e.target.result}">`;
+				document.querySelector("#imgFileUploadUpdateThumbnail").insertAdjacentHTML("beforeend", thumbnailHTML);
+			}
+		});
+	}
 	
 	// delete
-	$("#btnBoardDeleteConfirm").click(function(){
+	document.querySelector("#btnBoardDeleteConfirm").onclick = function(){
 		 alertify.confirm('삭제 확인', '이 글을 삭제하시겠습니까?',
  			function() {
 				boardDelete();
@@ -305,8 +353,7 @@ window.onload = function(){
  				console.log('cancel');
 			}
 		);
-	});
-*/	
+	};
 }
 
 // New for FileUpload, CKEditor
@@ -454,110 +501,66 @@ function validateInsert(){
 }
 
 async function boardInsert(){
+
 	var formData = new FormData();
 	formData.append("title", document.querySelector("#titleInsert").value);
 	formData.append("content", CKEditorInsert.getData());
+	
 	var files = document.querySelector("#inputFileUploadInsert").files;
 	const fileArray = Array.from(files);
-	fileArray.forEach(file => formData.append("file", file));
+	fileArray.forEach( file => formData.append("file", file));
 	
 	var url = '<%= contextPath%>/board/boardInsert';
 	var fetchOptions = {
-			method: 'POST',
-			headers: {
-				'async': 'true'			
-			},
-			body: formData
+		method: 'POST',
+		headers: {
+			'async': 'true'
+		},
+		body: formData
 	}
+	
 	try{
-		let response = await fetch(url, fetchOptions);
+		let response = await fetch(url, fetchOptions );
 		let data = await response.json();
-		if(data.result == "login") {
-			window.location.href = "<%=contextPath%>/login";
-		}
-		else{
+		if( data.result == "login" ){ // 백엔드 로그인 필터에서 session timeout 이 발생하면 내려주는 json 값
+			window.location.href = "<%=contextPath%>/login"; // 비동기 요청 X
+		}else{
 			alertify.success('글이 등록되었습니다.');
 			boardList();
 		}
-	} catch(error){
-		console.error(error);
-		alertify.error('글 등록 과정에 문제가 있습니다.')
+	}catch( error ){
+		console.error( error );
+		alertify.error('글 등록 과젱에 문제가 있습니다.')
 	}
-	
-	<%--
-	$.ajax(
-	{
-        type : 'post',
-        url : '<%= contextPath%>/board/boardInsert',
-        dataType : 'json',
-        data : 
-		{
-        	//userSeq: '<%=userDto.getUserSeq()%>',
-        	title: $("#titleInsert").val(),
-        	content: $("#contentInsert").val()
-		},
-        success : function(data, status, xhr) { 
-		
-        	if(data.result == "success"){
-        		alertify.success('글이 등록되었습니다.');
-        		boardList();
-        	}
-        }, 
-        error: function(jqXHR, textStatus, errorThrown) 
-        { 
-        	alertify.error(' 글 등록 과정에 문제가 생겼습니다.');
-			console.log(jqXHR);
-        	
-        }
-    });
-    --%>
 }
 
 // detail
 async function boardDetail(boardId){
+
 	var url = '<%= contextPath%>/board/boardDetail';
-	var urlParams = '?boardId='+boardId;
-	var fetchOptions = {
-			method: 'GET',
-			headers: {
-				'async':'true'
-			}
+	var urlParams = '?boardId=' + boardId;
+	
+	let fetchOptions = {
+		method: 'GET',
+		headers: {
+			'async': 'true'
+		}
 	}
 	
 	try{
 		let response = await fetch(url + urlParams, fetchOptions);
 		let data = await response.json();
-		if(data.result == "login") {
-			window.location.href = "<%=contextPath%>/login";
-		}
-		else{
+		
+		if( data.result == "login" ){ // 백엔드 로그인 필터에서 session timeout 이 발생하면 내려주는 json 값
+			window.location.href = "<%=contextPath%>/login"; // 비동기 요청 X
+		}else{
+			console.log(data);
 			makeDetailHtml(data);
 		}
-	} catch(error){
-		console.error(error);
-		alertify.error('글 조회 과정에 문제가 있습니다.')
+	}catch( error ){
+		console.error( error );
+		alertify.error("글 조회과정에 문제가 생겼습니다.");
 	}
-	
-	<%-- $.ajax(
-	{
-        type : 'get',
-        url : '<%= contextPath%>/board/boardDetail',
-        dataType : 'json',
-        data : 
-		{
-        	boardId: boardId
-		},
-        success : function(data, status, xhr) { 
-
-        	makeDetailHtml(data);
-        }, 
-        error: function(jqXHR, textStatus, errorThrown) 
-        {
-    		alertify.error(' 글 상세 조회 과정에 문제가 생겼습니다.');
-			console.log(jqXHR);
-        }
-    });
-    --%>
 }
 
 function makeDetailHtml(detail){
@@ -573,24 +576,47 @@ function makeDetailHtml(detail){
 	
 	var readCount = detail.readCount;
 	var sameUser = detail.sameUser;
-
-	$("#boardDetailModal").attr("data-boardId", boardId);
-	$("#boardIdDetail").html("#" + boardId);
-	$("#titleDetail").html(title);
-	$("#contentDetail").html(content);
-	$("#userNameDetail").html(userName);
-	$("#regDtDetail").html(regDtStr);
-	$("#readCountDetail").html(readCount);
+	var fileList = detail.fileList;
 	
-	if( !sameUser ){
-		$("#btnBoardUpdateForm").hide();
-		$("#btnBoardDeleteConfirm").hide();
-	}else{
-		$("#btnBoardUpdateForm").show();
-		$("#btnBoardDeleteConfirm").show();
+	document.querySelector("#boardDetailModal").setAttribute("data-boardId", boardId);
+	document.querySelector("#boardIdDetail").innerHTML = "#" + boardId;
+	document.querySelector("#titleDetail").innerHTML = title;
+	document.querySelector("#contentDetail").innerHTML = content;
+	document.querySelector("#userNameDetail").innerHTML = userName;
+	document.querySelector("#regDtDetail").innerHTML = regDtStr;
+	document.querySelector("#readCountDetail").innerHTML = readCount;
+	
+	// FileList
+	var fileListDetailHtml = ``;
+	if( fileList.length > 0 ){
+		for (var i = 0; i < fileList.length; i++) {
+			let fileId = fileList[i].fileId;
+			let fileName = fileList[i].fileName;
+			let fileUrl = fileList[i].fileUrl;
+			
+			fileListDetailHtml +=
+				`
+				<div>
+					<span class="fileName">\${fileName}</span>
+					&nbsp;&nbsp;
+					<a type="button" class="btn btn-outline btn-default btn-xs" data-fileId="\${fileId}" href="<%=contextPath%>/\${fileUrl}" download="\${fileName}">내려받기</a>	
+				</div>
+				`;				
+		}
+		
+		document.querySelector("#fileListDetail").innerHTML = fileListDetailHtml;
 	}
 	
-	$("#boardDetailModal").modal("show");
+	if( sameUser ){
+		document.querySelector("#btnBoardUpdateForm").style.display = "inline-block";
+		document.querySelector("#btnBoardDeleteConfirm").style.display = "inline-block";
+	}else{
+		document.querySelector("#btnBoardUpdateForm").style.display = "none";
+		document.querySelector("#btnBoardDeleteConfirm").style.display = "none";
+	}
+	
+	let modal = new bootstrap.Modal(document.querySelector("#boardDetailModal"));
+	modal.show();
 }
 
 // update
@@ -598,14 +624,14 @@ function validateUpdate(){
 	var isTitleUpdateValid = false;
 	var isContentUpdateValid = false;
 
-	var titleUpdate = $("#titleUpdate").val();
+	var titleUpdate = document.querySelector("#titleUpdate").value;
 	var titleUpdateLength = titleUpdate.length;
 	
 	if( titleUpdateLength > 0 ){
 		isTitleUpdateValid = true;
 	}
 	
-	var contentUpdateValue = $("#contentUpdate").val();
+	var contentUpdateValue = CKEditorUpdate.getData();
 	var contentUpdateLength = contentUpdateValue.length;
 	
 	if( contentUpdateLength > 0 ){
@@ -619,58 +645,71 @@ function validateUpdate(){
 	}
 }
 
-function boardUpdate(){
-
-	$.ajax(
-	{
-        type : 'post',
-        url : '<%= contextPath%>/board/boardUpdate',
-        dataType : 'json',
-        data : 
-		{
-        	boardId: $("#boardUpdateModal").attr("data-boardId"),
-        	title: $("#titleUpdate").val(),
-        	content: $("#contentUpdate").val()
+async function boardUpdate(){
+	
+	var boardId = document.querySelector("#boardUpdateModal").getAttribute("data-boardId");
+	var formData = new FormData();
+	formData.append("boardId", boardId);
+	formData.append("title", document.querySelector("#titleUpdate").value);
+	formData.append("content", CKEditorUpdate.getData());
+	
+	var files = document.querySelector("#inputFileUploadUpdate").files;
+	const fileArray = Array.from(files);
+	fileArray.forEach( file => formData.append("file", file));
+	
+	var url = '<%= contextPath%>/board/boardUpdate';
+	var fetchOptions = {
+		method: 'POST',
+		headers: {
+			'async': 'true'
 		},
-        success : function(data, status, xhr) { 
-		
-        	if(data.result == "success"){
-        		alertify.success('글이 수정되었습니다.');
-        		boardList();
-        	}
-        }, 
-        error: function(jqXHR, textStatus, errorThrown) 
-        {
-        	alertify.error(' 글 수정 과정에 문제가 생겼습니다.');
-			console.log(jqXHR);
-        }
-    });
+		body: formData
+	}
+	
+	try{
+		let response = await fetch(url, fetchOptions );
+		let data = await response.json();
+		if( data.result == "login" ){ // 백엔드 로그인 필터에서 session timeout 이 발생하면 내려주는 json 값
+			window.location.href = "<%=contextPath%>/login"; // 비동기 요청 X
+		}else{
+			alertify.success('글이 수정되었습니다.');
+			boardList();
+		}
+	}catch( error ){
+		console.error( error );
+		alertify.error('글 수정 과젱에 문제가 있습니다.')
+	}
 }
 
 // delete
-function boardDelete(){
-	$.ajax(
-	{
-        type : 'post',
-        url : '<%= contextPath%>/board/boardDelete',
-        dataType : 'json',
-        data : 
-		{
-        	boardId: $("#boardDetailModal").attr("data-boardId")
-		},
-        success : function(data, status, xhr) { 
+async function boardDelete(){
+	
+	var url = '<%= contextPath%>/board/boardDelete';
+	var urlParams = '?boardId=' + document.querySelector("#boardDetailModal").getAttribute("data-boardId");
+	
+	let fetchOptions = {
+		method: 'GET',
+		headers: {
+			'async': 'true'
+		}
+	}
+	
+	try{
+		let response = await fetch(url + urlParams, fetchOptions);
+		let data = await response.json();
 		
-        	if(data.result == "success"){
-        		alertify.success('글이 삭제되었습니다.');
-        		boardList();
-        	}
-        }, 
-        error: function(jqXHR, textStatus, errorThrown) 
-        {
-        	alertify.error(' 글 삭제 과정에 문제가 생겼습니다.');
-			console.log(jqXHR);
-        }
-    });
+		if( data.result == "login" ){ // 백엔드 로그인 필터에서 session timeout 이 발생하면 내려주는 json 값
+			window.location.href = "<%=contextPath%>/login"; // 비동기 요청 X
+		}else if(data.result == "success"){
+			alertify.success("글이 삭제되었습니다.");
+			boardList();
+		}else{
+			alertify.error("글 삭제 과정에 문제가 생겼습니다.");
+		}
+	}catch( error ){
+		console.error( error );
+		alertify.error("글 삭제 과정에 문제가 생겼습니다.");
+	}	
 }
 </script>
 

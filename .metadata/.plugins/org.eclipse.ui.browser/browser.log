@@ -350,3 +350,21 @@
 4월 08, 2022 17:11:29.19 [15492:13928:0408/171129.189:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
 4월 08, 2022 17:25:11.17 [10168:11572:0408/172511.172:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
 4월 08, 2022 17:53:36.25 [592:12316:0408/175336.257:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+
+4월 13, 2022 15:33:33.72 NEW SESSION
+4월 13, 2022 15:33:33.72 [14364:11912:0413/153333.719:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+4월 13, 2022 16:00:02.94 [17788:7120:0413/160002.944:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+
+4월 13, 2022 16:12:40.31 NEW SESSION
+4월 13, 2022 16:12:40.31 [22828:9096:0413/161240.315:ERROR:database.cc(1782)] Passwords SQLite error: code 2067 errno 0: UNIQUE constraint failed: logins.origin_url, logins.username_element, logins.username_value, logins.password_element, logins.signon_realm sql: INSERT INTO logins (origin_url, action_url, username_element, username_value, password_element, password_value, submit_element, signon_realm, date_created, blacklisted_by_user, scheme, password_type, times_used, form_data, display_name, icon_url, federation_url, skip_zero_click, generation_upload_status, possible_username_pairs, id, date_last_used, moving_blocked_for, date_password_modified) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+4월 13, 2022 16:14:00.85 [23260:25348:0413/161400.857:ERROR:database.cc(1782)] Passwords SQLite error: code 2067 errno 0: UNIQUE constraint failed: logins.origin_url, logins.username_element, logins.username_value, logins.password_element, logins.signon_realm sql: INSERT INTO logins (origin_url, action_url, username_element, username_value, password_element, password_value, submit_element, signon_realm, date_created, blacklisted_by_user, scheme, password_type, times_used, form_data, display_name, icon_url, federation_url, skip_zero_click, generation_upload_status, possible_username_pairs, id, date_last_used, moving_blocked_for, date_password_modified) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+4월 13, 2022 16:14:49.00 [23260:7576:0413/161449.009:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+4월 13, 2022 16:42:54.84 [24592:12104:0413/164254.843:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+4월 13, 2022 16:45:02.59 [11412:16052:0413/164502.598:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+4월 13, 2022 16:47:59.87 [24716:13892:0413/164759.869:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+4월 13, 2022 17:32:56.97 [18248:19644:0413/173256.975:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+4월 13, 2022 17:37:06.56 [1684:9588:0413/173706.561:ERROR:util.cc(126)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+4월 13, 2022 17:59:09.37 [14648:5868:0413/175909.374:ERROR:device_event_log_impl.cc(214)] [17:59:09.374] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+4월 13, 2022 17:59:09.37 [14648:5868:0413/175909.378:ERROR:device_event_log_impl.cc(214)] [17:59:09.378] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+4월 13, 2022 17:59:29.49 [23152:23948:0413/175929.493:ERROR:device_event_log_impl.cc(214)] [17:59:29.493] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+4월 13, 2022 17:59:29.49 [23152:23948:0413/175929.496:ERROR:device_event_log_impl.cc(214)] [17:59:29.496] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)

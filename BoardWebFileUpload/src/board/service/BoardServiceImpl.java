@@ -31,14 +31,20 @@ public class BoardServiceImpl implements BoardService {
 	
 	BoardDao dao = BoardDaoImpl.getInstance();
 	
-	@Override
-	public int boardUpdate(BoardDto dto) {
-		return dao.boardUpdate(dto);
-	}
 
 	@Override
-	public int boardDelete(int boardId) {
-		return dao.boardDelete(boardId);
+	public int boardDelete(int boardId, String uploadPath) {
+		List<String> fileUrlList = dao.boardFileUrlDeleteList(boardId);
+		
+		for(String fileUrl : fileUrlList) {
+			File file = new File(uploadPath + File.separator, fileUrl);
+			if(file.exists()) file.delete();
+		}
+		
+		// DB 테이블에서 파일 삭제
+		dao.boardFileDelete(boardId);
+		int ret = dao.boardDelete(boardId);
+		return ret;
 	}
 
 	
@@ -122,6 +128,62 @@ public class BoardServiceImpl implements BoardService {
 			
 		}
 		return boardId;
+	}
+
+
+	@Override
+	public int boardUpdate(BoardDto dto, Collection<Part> parts, String uploadPath) throws IOException {
+		// 첨부파일이 있을 경우 board_file 테이블에 삽입
+		int ret = dao.boardUpdate(dto);
+		if(ret < 0) return ret;
+		
+		// 물리적인 파일 저장
+		File uploadDir = new File(uploadPath + File.separator + uploadFolder);
+		if(!uploadDir.exists())
+			uploadDir.mkdir();
+		
+		// 첨부파일이 있으면 기존 파일 삭제
+		if(parts.size() > 0) {
+			List<String> fileUrlList = dao.boardFileUrlDeleteList(dto.getBoardId());
+			
+			for(String fileUrl : fileUrlList) {
+				File file = new File(uploadPath + File.separator, fileUrl);
+				if(file.exists()) file.delete();
+			}
+			
+			// DB 테이블에서 파일 삭제
+			dao.boardFileDelete(dto.getBoardId());
+		}
+		
+		
+		for(Part part : parts) {
+			// 파일 명으로  첨부파일 구분
+			String fileName = FileManager.getFileName(part);
+			if("".equals(fileName))
+				continue;
+			
+			//
+			UUID uuid = UUID.randomUUID();
+			String extension = FileManager.getFileExtension(fileName);
+			String savingFileName = uuid + "." + extension;
+			
+			// 물리적인 파일 저장
+			part.write(uploadPath + File.separator + uploadFolder + File.separator + savingFileName);
+			
+			// board_file 테이블 저장
+			BoardFileDto boardFileDto = new BoardFileDto();
+			boardFileDto.setBoardId(dto.getBoardId());
+			boardFileDto.setFileName(fileName);
+			boardFileDto.setFileSize(part.getSize());
+			boardFileDto.setFileContentType(part.getContentType());
+			
+			String boardFileUrl = uploadFolder + "/" + savingFileName;
+			boardFileDto.setFileUrl(boardFileUrl);
+			
+			dao.boardFileInsert(boardFileDto);
+			
+		}
+		return ret;
 	}
 
 }

@@ -388,5 +388,67 @@ public class BoardDaoImpl implements BoardDao {
 		
 		return ret;
 	}
+
+	@Override
+	public int boardFileDelete(int boardId) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int ret = -1;
+		
+		try {
+			con = DBManager.getConnection();
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("DELETE FROM BOARD_FILE ");
+			sb.append(" WHERE BOARD_ID = ? ");
+
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1, boardId);
+	
+			ret = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.releaseConnection(rs, pstmt, con);
+		}
+		
+		return ret;
+	}
+
+	@Override
+	public List<String> boardFileUrlDeleteList(int boardId) {
+		List<String> list = new ArrayList<>();
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = DBManager.getConnection();
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("SELECT FILE_URL ");
+			sb.append("  FROM BOARD_FILE ");
+			sb.append(" WHERE BOARD_ID = ?");			
+
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1,  boardId);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				list.add(rs.getString("FILE_URL"));
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.releaseConnection(rs, pstmt, con);
+		}
+		
+		return list;
+	}
 	
 }

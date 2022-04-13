@@ -24,7 +24,6 @@
 	<section name="NewWizardAction">
 		<item value="org.eclipse.jdt.ui.wizards.NewClassCreationWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.wst.XMLCategory"/>
 		</list>
 	</section>
 	<section name="ImportExportAction">
@@ -43,6 +42,7 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\박기수\Downloads\소스코드\220413\BoardWebFileUpload"/>
 			<item value="C:\Users\박기수\Downloads\소스코드\220330\BoardWebAjaxJson"/>
 			<item value="C:\Users\박기수\Downloads\소스코드\220329\guestbook_mvc2_0328_live"/>
 			<item value="C:\Users\박기수\Downloads\소스코드\220328\guestbook_mvc_배포"/>

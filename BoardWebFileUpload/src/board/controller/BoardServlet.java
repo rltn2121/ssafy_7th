@@ -185,7 +185,7 @@ public class BoardServlet extends HttpServlet {
 		boardDto.setTitle(request.getParameter("title"));
 		boardDto.setContent(request.getParameter("content"));
 		
-		int ret = service.boardUpdate(boardDto);
+		int ret = service.boardUpdate(boardDto, request.getParts(), uploadPath);
 
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
@@ -202,7 +202,7 @@ public class BoardServlet extends HttpServlet {
 		String strBoardId = request.getParameter("boardId");
 		// if strBoardId == null or "" Exception ...
 		int boardId = Integer.parseInt(strBoardId);
-		int ret = service.boardDelete(boardId);
+		int ret = service.boardDelete(boardId, uploadPath);
 
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();

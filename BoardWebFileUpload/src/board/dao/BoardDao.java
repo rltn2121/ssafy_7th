@@ -20,4 +20,6 @@ public interface BoardDao {
 	
 	public int boardFileInsert(BoardFileDto dto);
 	public List<BoardFileDto> boardDetailFileList(int boardId);
+	public int boardFileDelete(int boardId);
+	public List<String> boardFileUrlDeleteList(int boardId);
 }

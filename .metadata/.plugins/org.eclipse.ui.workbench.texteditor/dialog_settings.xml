@@ -6,29 +6,32 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="boardDetail" key="selection"/>
+		<item value="boardDelete" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="boardDetail"/>
-			<item value="boardinsert"/>
-			<item value="titleInsert"/>
-			<item value="const fileArray = Array.form(files);"/>
-			<item value="validateInsert"/>
-			<item value="chkFileUploadInsert"/>
-			<item value="imgfileupload"/>
-			<item value="imgFileUploadInsertWrapper"/>
-			<item value="diveditorinsert"/>
-			<item value="*F"/>
-			<item value="*"/>
-			<item value="timeout"/>
-			<item value="parse(json)"/>
-			<item value="fetchoptions"/>
-			<item value="// New for FileUpload, CKEditor"/>
+			<item value="boardDelete"/>
+			<item value="Insert"/>
+			<item value="boardUpdate"/>
+			<item value="validateUpdate"/>
+			<item value="contentDetail"/>
+			<item value="contentUpdate"/>
+			<item value="inputfileuploadupdate"/>
+			<item value="InsertUpdate"/>
+			<item value="btnBoardUpdate"/>
+			<item value="내려받기"/>
+			<item value="받기"/>
+			<item value="fileListDetail"/>
+			<item value="detail"/>
+			<item value="filelist"/>
+			<item value="filedetail"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Update"/>
+			<item value="arr[row][col]"/>
+			<item value="cost"/>
 			<item value="recId"/>
 			<item value="j&lt;M"/>
 			<item value="[N][M]"/>
